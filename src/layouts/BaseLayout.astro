@@ -1,0 +1,124 @@
+---
+import { ViewTransitions, fade } from 'astro:transitions';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Omar Zaghloul — Portfolio',
+  description = 'Software developer portfolio showcasing projects and experience.',
+  ogImage = '/og-image.png',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Omar Zaghloul",
+  "url": Astro.site ? Astro.site.toString() : Astro.url.origin,
+  "jobTitle": "Full-Stack Developer, AI & Automation Expert",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "RuneX"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "Kadir Has University"
+  },
+  "sameAs": [
+    "https://linkedin.com/in/omarzaghloul",
+    "https://github.com/omarzaghloul"
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts Preconnect & Preload -->
+    <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap" as="style" />
+
+    <!-- Primary meta -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- JSON-LD Structured Data Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+    <!-- Analytics Placeholder -->
+    <!-- <script defer data-domain="omarzaghloul.com" src="https://plausible.io/js/script.js"></script> -->
+
+    <ViewTransitions />
+  </head>
+  <body transition:animate={fade({ duration: '0.4s' })}>
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="custom-cursor hidden md:block"></div>
+
+    <slot />
+
+    <script>
+      import { gsap } from "gsap";
+
+      const initCursor = () => {
+        // Fast fail for touch screens to disable standard hover artifacts entirely
+        if (window.matchMedia("(pointer: coarse)").matches) return;
+
+        const cursor = document.getElementById("custom-cursor");
+        if (!cursor) return;
+
+        // Ensure visibility
+        gsap.set(cursor, { autoAlpha: 1 });
+        
+        let xTo = gsap.quickTo(cursor, "x", { duration: 0.2, ease: "power3", force3D: true });
+        let yTo = gsap.quickTo(cursor, "y", { duration: 0.2, ease: "power3", force3D: true });
+
+        const onMouseMove = (e: MouseEvent) => {
+          // Add half of width/height offsets to perfectly center pointer interaction
+          xTo(e.clientX - 6);
+          yTo(e.clientY - 6);
+        };
+        
+        window.addEventListener("mousemove", onMouseMove);
+
+        // Bind interactive elements mapping
+        const initHoverBehaviors = () => {
+          const interactiveElements = document.querySelectorAll("a, button, .project-card, input, select, textarea");
+          
+          interactiveElements.forEach((el) => {
+            el.addEventListener("mouseenter", () => cursor.classList.add("hovering"));
+            el.addEventListener("mouseleave", () => cursor.classList.remove("hovering"));
+          });
+        };
+
+        // Initialize immediately
+        initHoverBehaviors();
+      };
+
+      document.addEventListener("astro:page-load", initCursor);
+    </script>
+  </body>
+</html>
