@@ -113,18 +113,9 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
               <h3 class="font-display text-2xl font-bold text-text md:text-3xl">
                 {project.data.title}
               </h3>
-              <p class="mt-2 mb-6 font-body text-base text-text-muted/80">
+              <p class="mt-2 font-body text-base text-text-muted/80">
                 {project.data.subtitle}
               </p>
-              
-              <!-- Tech Tags -->
-              <div class="mt-auto flex flex-wrap gap-2">
-                {project.data.tech.map((techItem, index) => (
-                  <span class={`rounded-full bg-bg px-3 py-1 text-xs font-medium ${index === 0 ? 'text-accent border border-accent/20' : 'text-text-muted border border-border/50'}`}>
-                    {techItem}
-                  </span>
-                ))}
-              </div>
             </div>
           </a>
         ))}
@@ -135,20 +126,63 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
   <!-- About Section -->
   <section class="relative w-full bg-bg px-6 py-32 lg:px-16" id="about">
     <div class="mx-auto w-full max-w-[900px]">
-      <h2 id="about-header" class="mb-16 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0">
+      <h2 id="about-header" class="mb-2 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0">
         About
       </h2>
+      <h3 id="about-subheader" class="mb-12 font-display text-[clamp(1.5rem,3vw,2.5rem)] text-accent opacity-0">
+        Building systems that grow with your business — not against it.
+      </h3>
 
       <div class="flex flex-col">
         <!-- Bio Paragraphs -->
         <div class="flex flex-col gap-6 mb-16">
-          <p class="about-text font-body text-[1.25rem] leading-[1.8] text-text/90 opacity-0 md:text-[1.35rem]">
-            Most businesses I work with come to me with the same story — their operations run on WhatsApp threads, shared spreadsheets, and manual processes that worked fine at 10 clients but collapse at 50. I build the systems that replace that. Custom platforms that centralize workflows, automate the repetitive parts, and give teams one place to work instead of five.
+          <p class="about-text font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0">
+            Most businesses hit a ceiling not because demand slows down, but because their internal systems can't keep up. Operations scattered across WhatsApp threads, spreadsheets, and disconnected tools. Data that lives in five places but is accurate in none of them. Teams spending hours on work that should take minutes. I build the platforms that permanently replace that friction.
           </p>
-          <p class="about-text font-body text-[1.25rem] leading-[1.8] text-text/90 opacity-0 md:text-[1.35rem]">
-            <a href="#" class="hover-link font-semibold text-accent transition-colors hover:text-accent-dim">RuneX</a> is the studio I founded to do this. Recent work includes a clinical dashboard for oncology pharmacists, a white-label application tracker for education agencies, and a booking platform for a travel operator serving multiple countries. Every project ships on a modern stack — Next.js, React, Supabase, Flutter — chosen for speed without architectural shortcuts. I hold an MSc in Computer Science and work from Istanbul.
+          <p class="about-text font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0">
+            Through <span class="font-semibold text-accent">RuneX</span>, I partner with businesses to turn operational bottlenecks into scalable, automated infrastructure. My work spans four areas:
           </p>
         </div>
+
+        <!-- Capability Blocks Vertical List -->
+        <div class="flex flex-col gap-8 mb-12">
+          <!-- Block 1 -->
+          <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
+            <h4 class="mb-2 font-display text-xl font-bold text-text">Custom Web & Business Platforms</h4>
+            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted">
+              Centralized dashboards and portals where your team manages operations and your clients track their own progress in real time. From oncology clinics coordinating treatment cycles to education agencies managing hundreds of student applications across universities — each platform is built around how your business actually runs, not how a generic tool thinks it should.
+            </p>
+          </div>
+          
+          <!-- Block 2 -->
+          <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
+            <h4 class="mb-2 font-display text-xl font-bold text-text">Mobile Applications</h4>
+            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted">
+              Cross-platform apps that put your service directly in your users' hands. From AI-powered fitness companions with integrated chatbot coaching to consumer-facing booking experiences, I build for both iOS and Android from a single codebase without compromising on feel.
+            </p>
+          </div>
+          
+          <!-- Block 3 -->
+          <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
+            <h4 class="mb-2 font-display text-xl font-bold text-text">AI & Workflow Automation</h4>
+            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted">
+              If a process is repetitive, it should be automated. I design intelligent workflows that connect your existing tools, eliminate manual data transfer, and surface insights your team would otherwise spend hours compiling. Auto-generated treatment schedules, smart document routing, pipeline triggers that fire without human intervention — the goal is always to remove the busywork so your team focuses on growth.
+            </p>
+          </div>
+
+          <!-- Block 4 -->
+          <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
+            <h4 class="mb-2 font-display text-xl font-bold text-text">Rapid Deployment & E-Commerce</h4>
+            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted">
+              Not every project needs a six-month build cycle. For businesses that need to move fast — launching a booking platform, standing up a content-driven site, deploying an e-commerce storefront — I match the right technology to the timeline, getting you to market quickly with architecture that won't need to be thrown away when you scale.
+            </p>
+          </div>
+        </div>
+        
+        <!-- Closing Paragraph -->
+        <p class="about-closing mt-8 font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0">
+          Technology only matters if it drives your business forward. I bring a background in computer engineering and product management to every engagement — which means you're not just getting a developer who writes code to spec. You're getting an architect who understands the business objective and builds the exact technical foundation to execute it. One point of contact. No handoffs. No rotating juniors.
+        </p>
 
         <!-- Subtle Line Divider -->
         <div class="w-full h-px bg-border/40 mb-16 relative">
@@ -223,9 +257,46 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
       );
 
       // Removed matchMedia horizontal pinning for native scroll experience.
+      // JS Drag-to-Scroll implementation for horizontal wrapper
+      const slider = document.querySelector("#work-horizontal-wrapper") as HTMLElement;
+      if (slider) {
+        let isDown = false;
+        let startX: number;
+        let scrollLeft: number;
+
+        slider.addEventListener('mousedown', (e) => {
+          isDown = true;
+          slider.classList.add('cursor-grabbing');
+          // Disabling snap for smoother drag
+          slider.classList.remove('snap-x', 'snap-mandatory');
+          startX = e.pageX - slider.offsetLeft;
+          scrollLeft = slider.scrollLeft;
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+          isDown = false;
+          slider.classList.remove('cursor-grabbing');
+          slider.classList.add('snap-x', 'snap-mandatory');
+        });
+        
+        slider.addEventListener('mouseup', () => {
+          isDown = false;
+          slider.classList.remove('cursor-grabbing');
+          slider.classList.add('snap-x', 'snap-mandatory');
+        });
+        
+        slider.addEventListener('mousemove', (e) => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - slider.offsetLeft;
+          const walk = (x - startX) * 2; // Scroll-fast multiplier
+          slider.scrollLeft = scrollLeft - walk;
+        });
+      }
+
       // GSAP animate the newly configured project cards with simple fade up
       const cards = gsap.utils.toArray(".project-card");
-      cards.forEach((card: any) => {
+      cards.forEach((card: any, index: number) => {
         gsap.fromTo(
           card,
           { y: 30, opacity: 0 },
@@ -258,14 +329,31 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
         }
       );
 
-      // About bio text animation
+      // About subheading animation
       gsap.fromTo(
-        ".about-text",
-        { y: 30, opacity: 0 },
+        "#about-subheader",
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "#about-subheader",
+            start: "top 85%",
+          }
+        }
+      );
+
+      // About bio text animation
+      gsap.fromTo(
+        ".about-text",
+        { y: 20, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
           ease: "power3.out",
           scrollTrigger: {
             trigger: ".about-text",
@@ -274,24 +362,41 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
         }
       );
 
-      // About capabilities grid animation
+      // About blocks vertical list animation
       gsap.fromTo(
-        ".about-grid",
-        { y: 30, opacity: 0 },
+        ".about-block",
+        { x: -20, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".about-block",
+            start: "top 85%",
+          }
+        }
+      );
+
+      // About closing animation
+      gsap.fromTo(
+        ".about-closing",
+        { y: 20, opacity: 0 },
         {
           y: 0,
           opacity: 1,
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
-            trigger: ".about-grid",
+            trigger: ".about-closing",
             start: "top 85%",
           }
         }
       );
+
     };
 
-    // Astro view transitions event
     document.addEventListener("astro:page-load", initAnimations);
   </script>
 
