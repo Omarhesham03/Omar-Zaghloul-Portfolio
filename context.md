@@ -40,7 +40,7 @@ Building a professional, high-performance portfolio for Omar Zaghloul using Astr
 - [x] Animations & Micro-interactions
 - [x] SEO & Performance Optimization
 - [x] GitHub Initialization & Push
-- [ ] Inject Case Study MDX Content (Final Step)
+- [x] Inject Case Study MDX Content (Final Step)
 
 ## Key Files
 - `src/pages/index.astro`: Homepage
