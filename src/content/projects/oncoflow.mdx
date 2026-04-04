@@ -1,0 +1,21 @@
+---
+title: "OncoFlow"
+subtitle: "Oncology Clinical Pharmacist Platform"
+slug: "oncoflow"
+category: "Healthcare / SaaS"
+role: "Full-Stack Developer & Product Designer"
+year: "2025–2026"
+tech:
+  - Next.js
+  - React
+  - Supabase
+  - Tailwind CSS
+status: "Prototype — Actively seeking clinical partners"
+thumbnail: "../../assets/projects/oncoflow/Oncoflow.png"
+order: 1
+heroTagline: "Replacing spreadsheets and paper trails in oncology wards with a unified clinical dashboard."
+problem: "Oncology pharmacists track chemotherapy cycles, lab results, drug interactions, and patient timelines — often across disconnected spreadsheets, paper forms, and hospital systems that don't talk to each other. A missed lab value or a scheduling conflict in a treatment cycle isn't just inefficiency — it's a patient safety risk. The existing workflow depends on manual cross-referencing and institutional memory rather than structured, accessible data."
+solution: "OncoFlow is a web-based clinical dashboard purpose-built for oncology pharmacists. It centralizes patient management into three core modules:\n\nA Master Calendar that maps every patient's chemotherapy cycles, pre-medications, lab reviews, and follow-ups onto a single timeline — color-coded by event type, filterable by protocol. When a pharmacist assigns a treatment protocol to a patient, the system automatically generates the full cycle schedule, associated medications, expected symptoms, and treatment timeline — eliminating manual calendar entry and reducing scheduling errors.\n\nA Lab Values Tracker organized by clinical category (hematology, renal, hepatic, coagulation, electrolytes) with historical trending and flag-worthy thresholds, so pharmacists can assess treatment readiness at a glance rather than digging through paper records.\n\nA Patient Registry with search, protocol tagging (CHOP, FOLFOX, etc.), and admission tracking — giving pharmacists a structured, filterable view of their active caseload instead of a mental list.\n\nThe platform also generates printable patient reports and lab summaries — bridging the gap between the digital dashboard and the physical documentation that hospitals still require."
+technicalDecisions: "The stack is Next.js with Supabase for auth, database, and row-level security — chosen for rapid prototyping speed without sacrificing a real permission model. The calendar uses a custom implementation rather than a third-party library, allowing treatment cycle logic (21-day CHOP cycles, dose-day mapping) to be encoded directly into the scheduling layer. Supabase's real-time subscriptions keep the dashboard current across concurrent sessions."
+whereItStands: "Built in collaboration with a clinical pharmacy graduate as a working prototype. Currently being refined for proposal to oncology departments and private clinics as a lightweight alternative to full-scale hospital information systems."
+---

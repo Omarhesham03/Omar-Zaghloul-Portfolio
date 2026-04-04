@@ -1,0 +1,21 @@
+---
+title: "Reverse Swing"
+subtitle: "Cricket Analysis & Stories Platform"
+slug: "reverse-swing"
+category: "Sports / Content Platform"
+role: "Full-Stack Developer"
+year: "2025"
+tech:
+  - Next.js
+  - React
+  - Supabase
+  - Tailwind CSS
+status: "Built — Pre-launch"
+thumbnail: "../../assets/projects/reverse-swing/Reverse-Swing.png"
+order: 5
+heroTagline: "A content platform for cricket analysis, player profiles, and long-form sports writing — built for writers who care about the craft."
+problem: "Cricket content online lives in two extremes: mass-market news aggregators (ESPNcricinfo, Cricbuzz) that prioritize speed and scores, and social media threads that disappear in hours. There's a gap for long-form cricket writing — tactical analysis, player career retrospectives, bowling mechanics breakdowns — presented in a reading experience that respects both the writer and the reader. Medium works but offers no sport-specific structure. WordPress works but looks like 2012."
+solution: "Reverse Swing is a purpose-built publishing platform for cricket content. It combines a public-facing article site with a custom admin dashboard for content management.\n\nThe Public Site features a cinematic dark-themed reading experience with article cards, category filtering (Stories & Analysis), player profiles with contextual statistics, and a mobile-responsive layout designed for long reading sessions.\n\nThe Admin Dashboard provides a content management interface with article creation, draft/publish workflow, media file management, and per-article analytics (view tracking over time). It's built as a lightweight CMS rather than a bloated general-purpose solution — every feature exists because cricket writers need it."
+technicalDecisions: "Supabase handles content storage, auth, and real-time analytics. The architecture is intentionally simple — no static site generation complexity, no build-time content compilation. Articles are fetched at request time from Supabase, keeping the publishing workflow instant (write → publish → live) without waiting for rebuilds. Image optimization is handled at the edge via Next.js image component and Vercel's CDN."
+whereItStands: "Fully functional with the admin dashboard and public reading experience complete. Currently in pre-launch — pending custom domain setup and initial content seeding before public release."
+---
