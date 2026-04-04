@@ -1,0 +1,39 @@
+
+> omar-zaghloul-portfolio@0.0.1 build
+> astro build
+
+01:13:37 [types] Generated 810ms
+01:13:37 [build] output: "static"
+01:13:37 [build] directory: C:\Users\omarh\OneDrive - Kadir Has University\Belgeler\GITHUB\Omar-Zaghloul-Portfolio\dist\
+01:13:37 [build] Collecting build info...
+01:13:37 [build] ✓ Completed in 964ms.
+01:13:37 [build] Building static entrypoints...
+01:13:40 [vite] [32m✓ built in 2.09s[39m
+01:13:40 [build] ✓ Completed in 2.18s.
+
+ building client (vite) 
+01:13:40 [vite] transforming...
+01:13:40 [vite] [32m✓[39m 23 modules transformed.
+01:13:40 [vite] rendering chunks...
+01:13:40 [vite] computing gzip size...
+01:13:40 [vite] [2mdist/[22m[36m_astro/hoisted.Py2ZK6GU.js                                               [39m[1m[2m  0.85 kB[22m[1m[22m[2m │ gzip:  0.46 kB[22m
+01:13:40 [vite] [2mdist/[22m[36m_astro/hoisted.BhK0AAGc.js                                               [39m[1m[2m  2.37 kB[22m[1m[22m[2m │ gzip:  0.83 kB[22m
+01:13:40 [vite] [2mdist/[22m[36m_astro/ViewTransitions.astro_astro_type_script_index_0_lang.8wKregdI.js  [39m[1m[2m130.09 kB[22m[1m[22m[2m │ gzip: 50.42 kB[22m
+01:13:40 [vite] [32m✓ built in 900ms[39m
+
+ generating static routes 
+01:13:41 ▶ src/pages/projects/[slug].astro
+The collection "projects" does not exist or is empty. Ensure a collection directory with this name exists.
+01:13:41 ▶ src/pages/index.astro
+01:13:41   └─ /index.htmlThe collection "projects" does not exist or is empty. Ensure a collection directory with this name exists.
+ (+20ms)
+01:13:41 ✓ Completed in 58ms.
+
+Cannot read properties of undefined (reading 'reduce')
+  Location:
+    C:\Users\omarh\OneDrive - Kadir Has University\Belgeler\GITHUB\Omar-Zaghloul-Portfolio\node_modules\@astrojs\sitemap\dist\index.js:85:37
+  Stack trace:
+    at astro:build:done (file:///C:/Users/omarh/OneDrive%20-%20Kadir%20Has%20University/Belgeler/GITHUB/Omar-Zaghloul-Portfolio/node_modules/@astrojs/sitemap/dist/index.js:85:37)
+    at async AstroBuilder.build (file:///C:/Users/omarh/OneDrive%20-%20Kadir%20Has%20University/Belgeler/GITHUB/Omar-Zaghloul-Portfolio/node_modules/astro/dist/core/build/index.js:159:5)
+    at async build (file:///C:/Users/omarh/OneDrive%20-%20Kadir%20Has%20University/Belgeler/GITHUB/Omar-Zaghloul-Portfolio/node_modules/astro/dist/core/build/index.js:51:3)
+    at async runCommand (file:///C:/Users/omarh/OneDrive%20-%20Kadir%20Has%20University/Belgeler/GITHUB/Omar-Zaghloul-Portfolio/node_modules/astro/dist/cli/index.js:147:7)

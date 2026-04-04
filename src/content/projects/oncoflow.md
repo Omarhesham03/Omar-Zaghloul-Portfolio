@@ -1,7 +1,6 @@
 ---
 title: "OncoFlow"
 subtitle: "Oncology Clinical Pharmacist Platform"
-slug: "oncoflow"
 category: "Healthcare / SaaS"
 role: "Full-Stack Developer & Product Designer"
 year: "2025–2026"

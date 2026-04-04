@@ -1,7 +1,6 @@
 ---
 title: "Altınkapı"
 subtitle: "Hajj & Umrah Booking Platform"
-slug: "altinkapi"
 category: "Travel / E-Commerce"
 role: "Full-Stack Developer"
 year: "2025"

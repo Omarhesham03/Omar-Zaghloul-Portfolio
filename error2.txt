@@ -1,0 +1,60 @@
+
+> omar-zaghloul-portfolio@0.0.1 build
+> astro build
+
+01:15:12 [types] Generated 582ms
+01:15:12 [build] output: "static"
+01:15:12 [build] directory: C:\Users\omarh\OneDrive - Kadir Has University\Belgeler\GITHUB\Omar-Zaghloul-Portfolio\dist\
+01:15:12 [build] Collecting build info...
+01:15:12 [build] ✓ Completed in 705ms.
+01:15:13 [build] Building static entrypoints...
+01:15:15 [vite] [32m✓ built in 2.10s[39m
+01:15:15 [build] ✓ Completed in 2.16s.
+
+ building client (vite) 
+01:15:15 [vite] transforming...
+01:15:16 [vite] [32m✓[39m 23 modules transformed.
+01:15:16 [vite] rendering chunks...
+01:15:16 [vite] computing gzip size...
+01:15:16 [vite] [2mdist/[22m[36m_astro/hoisted.Py2ZK6GU.js                                               [39m[1m[2m  0.85 kB[22m[1m[22m[2m │ gzip:  0.46 kB[22m
+01:15:16 [vite] [2mdist/[22m[36m_astro/hoisted.BhK0AAGc.js                                               [39m[1m[2m  2.37 kB[22m[1m[22m[2m │ gzip:  0.83 kB[22m
+01:15:16 [vite] [2mdist/[22m[36m_astro/ViewTransitions.astro_astro_type_script_index_0_lang.8wKregdI.js  [39m[1m[2m130.09 kB[22m[1m[22m[2m │ gzip: 50.42 kB[22m
+01:15:16 [vite] [32m✓ built in 839ms[39m
+
+ generating static routes 
+01:15:16 ▶ src/pages/projects/[slug].astro
+01:15:16   ├─ /projects/oncoflow/index.html (+20ms)
+01:15:16   ├─ /projects/altinkapi/index.html (+6ms)
+01:15:16   ├─ /projects/educounsellor/index.html (+5ms)
+01:15:16   ├─ /projects/spotter/index.html (+4ms)
+01:15:16   └─ /projects/reverse-swing/index.html (+8ms)
+01:15:16 ▶ src/pages/index.astro
+01:15:16   └─ /index.html (+7ms)
+01:15:16 ✓ Completed in 87ms.
+
+ generating optimized images 
+01:15:16   ▶ /_astro/Oncoflow.bgmxpaTU_ZlEnan.webp (reused cache entry) (+3ms) (1/15)
+01:15:16   ▶ /_astro/Oncoflow.bgmxpaTU_Z1p61YJ.webp (reused cache entry) (+2ms) (2/15)
+01:15:16   ▶ /_astro/Oncoflow.bgmxpaTU_1F9KiR.webp (reused cache entry) (+2ms) (3/15)
+01:15:16   ▶ /_astro/Altinkapi.DRW2mcjD_Z1q3wic.webp (reused cache entry) (+2ms) (4/15)
+01:15:16   ▶ /_astro/Altinkapi.DRW2mcjD_FBMcR.webp (reused cache entry) (+6ms) (5/15)
+01:15:16   ▶ /_astro/Altinkapi.DRW2mcjD_Z15eevF.webp (reused cache entry) (+2ms) (6/15)
+01:15:16   ▶ /_astro/Educounselor.BC4ztY9B_Z2hVcCo.webp (reused cache entry) (+2ms) (7/15)
+01:15:16   ▶ /_astro/Educounselor.BC4ztY9B_Z1OKgL3.webp (reused cache entry) (+3ms) (8/15)
+01:15:16   ▶ /_astro/Educounselor.BC4ztY9B_1TONpk.webp (reused cache entry) (+2ms) (9/15)
+01:15:16   ▶ /_astro/Spotter.BUyZFXIe_Z1Po9W0.webp (reused cache entry) (+2ms) (10/15)
+01:15:16   ▶ /_astro/Spotter.BUyZFXIe_liBeQ.webp (reused cache entry) (+3ms) (11/15)
+01:15:16   ▶ /_astro/Spotter.BUyZFXIe_1LzLU1.webp (reused cache entry) (+2ms) (12/15)
+01:15:16   ▶ /_astro/Reverse-Swing.AbkNM9gy_Z1PAuly.webp (reused cache entry) (+2ms) (13/15)
+01:15:16   ▶ /_astro/Reverse-Swing.AbkNM9gy_ZjGjV1.webp (reused cache entry) (+2ms) (14/15)
+01:15:16   ▶ /_astro/Reverse-Swing.AbkNM9gy_zP1IK.webp (reused cache entry) (+2ms) (15/15)
+01:15:16 ✓ Completed in 39ms.
+
+Cannot read properties of undefined (reading 'reduce')
+  Location:
+    C:\Users\omarh\OneDrive - Kadir Has University\Belgeler\GITHUB\Omar-Zaghloul-Portfolio\node_modules\@astrojs\sitemap\dist\index.js:85:37
+  Stack trace:
+    at astro:build:done (file:///C:/Users/omarh/OneDrive%20-%20Kadir%20Has%20University/Belgeler/GITHUB/Omar-Zaghloul-Portfolio/node_modules/@astrojs/sitemap/dist/index.js:85:37)
+    at async AstroBuilder.build (file:///C:/Users/omarh/OneDrive%20-%20Kadir%20Has%20University/Belgeler/GITHUB/Omar-Zaghloul-Portfolio/node_modules/astro/dist/core/build/index.js:159:5)
+    at async build (file:///C:/Users/omarh/OneDrive%20-%20Kadir%20Has%20University/Belgeler/GITHUB/Omar-Zaghloul-Portfolio/node_modules/astro/dist/core/build/index.js:51:3)
+    at async runCommand (file:///C:/Users/omarh/OneDrive%20-%20Kadir%20Has%20University/Belgeler/GITHUB/Omar-Zaghloul-Portfolio/node_modules/astro/dist/cli/index.js:147:7)

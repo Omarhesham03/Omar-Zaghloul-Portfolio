@@ -1,7 +1,6 @@
 ---
 title: "EduCounsellor"
 subtitle: "White-Label Student Application Management Dashboard"
-slug: "educounsellor"
 category: "EdTech / SaaS"
 role: "Full-Stack Developer & Product Designer"
 year: "2025–2026"

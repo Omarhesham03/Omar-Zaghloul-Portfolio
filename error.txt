@@ -1,0 +1,83 @@
+﻿
+> omar-zaghloul-portfolio@0.0.1 build
+> astro build
+
+01:10:52 [types] Generated 573ms
+01:10:52 [build] output: "static"
+01:10:52 [build] directory: C:\Users\omarh\OneDrive - Kadir Has University\Belgeler\GITHUB\Omar-Zaghloul-Portfolio\dist\
+01:10:52 [build] Collecting build info...
+01:10:52 [build] Γ£ô Completed in 709ms.
+01:10:52 [build] Building static entrypoints...
+node.exe : 01:10:53 
+[ERROR] [vite] 
+[31mx[39m Build failed 
+in 1.09s
+At C:\Program 
+Files\nodejs\npm.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPM_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (0  
+  1:10:53 [ERROR...fail   
+ ed in 1.09s:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+[ContentSchemaContainsSlug
+Error] 
+[astro:content-imports] A 
+content collection schema 
+should not contain `slug` 
+since it is reserved for 
+slug generation. Remove 
+this from your projects 
+collection schema.
+file: 
+C:/Users/omarh/OneDrive - 
+Kadir Has University/Belge
+ler/GITHUB/Omar-Zaghloul-P
+ortfolio/src/content/proje
+cts/case-studies-final.md?
+astroContentCollectionEntr
+y=true
+  Hint:
+    See https://docs.astro
+.build/en/guides/content-c
+ollections/ for more on 
+the `slug` field.
+  Error reference:
+    https://docs.astro.bui
+ld/en/reference/errors/con
+tent-schema-contains-slug-
+error/
+  Stack trace:
+    at 
+getEntryDataAndImages (fil
+e:///C:/Users/omarh/OneDri
+ve%20-%20Kadir%20Has%20Uni
+versity/Belgeler/GITHUB/Om
+ar-Zaghloul-Portfolio/node
+_modules/astro/dist/conten
+t/utils.js:119:13)
+    at 
+getContentEntryModule (fil
+e:///C:/Users/omarh/OneDri
+ve%20-%20Kadir%20Has%20Uni
+versity/Belgeler/GITHUB/Om
+ar-Zaghloul-Portfolio/node
+_modules/astro/dist/conten
+t/vite-plugin-content-impo
+rts.js:171:41)
+    at async transform (fi
+le:///C:/Users/omarh/OneDr
+ive%20-%20Kadir%20Has%20Un
+iversity/Belgeler/GITHUB/O
+mar-Zaghloul-Portfolio/nod
+e_modules/rollup/dist/es/s
+hared/node-entry.js:21657:
+16)

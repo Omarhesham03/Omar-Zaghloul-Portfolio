@@ -1,7 +1,6 @@
 ---
 title: "Reverse Swing"
 subtitle: "Cricket Analysis & Stories Platform"
-slug: "reverse-swing"
 category: "Sports / Content Platform"
 role: "Full-Stack Developer"
 year: "2025"

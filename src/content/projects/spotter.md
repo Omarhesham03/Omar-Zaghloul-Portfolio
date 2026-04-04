@@ -1,7 +1,6 @@
 ---
 title: "Spotter"
 subtitle: "AI-Powered Nutrition & Fitness Companion"
-slug: "spotter"
 category: "Health & Fitness / Mobile"
 role: "Mobile Developer & UI Designer"
 year: "2025"
