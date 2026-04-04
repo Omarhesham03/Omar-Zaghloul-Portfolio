@@ -76,15 +76,25 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
 
     <!-- Pinned Container -->
     <div class="relative w-full overflow-hidden" id="work-pin-container">
-      <div class="px-6 lg:px-16" id="work-header-container">
+      <div class="px-6 lg:px-16 mb-12 flex items-end justify-between" id="work-header-container">
         <!-- Section Header -->
-        <h2 id="work-header" class="mb-12 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0">
+        <h2 id="work-header" class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0">
           Selected Work
         </h2>
+        
+        <!-- Navigation Arrows -->
+        <div class="flex gap-4 opacity-0" id="work-nav-arrows">
+          <button id="scroll-left" aria-label="Scroll left" class="group flex h-12 w-12 items-center justify-center rounded-full border border-border/50 bg-surface transition-all hover:border-accent/50 hover:bg-surface/80">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-muted transition-colors group-hover:text-accent"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+          </button>
+          <button id="scroll-right" aria-label="Scroll right" class="group flex h-12 w-12 items-center justify-center rounded-full border border-border/50 bg-surface transition-all hover:border-accent/50 hover:bg-surface/80">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-muted transition-colors group-hover:text-accent"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
       </div>
 
       <!-- Project Cards Horizontal Wrapper -->
-      <div class="flex w-full overflow-x-auto snap-x snap-mandatory gap-8 px-6 pb-12 md:gap-12 lg:px-16" id="work-horizontal-wrapper" style="scrollbar-width: none; -ms-overflow-style: none;">
+      <div class="flex w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory gap-8 px-6 pb-12 md:gap-12 lg:px-16 scroll-smooth" id="work-horizontal-wrapper" style="scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch;">
         <style>
           #work-horizontal-wrapper::-webkit-scrollbar { display: none; }
         </style>
@@ -185,11 +195,7 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
         </p>
 
         <!-- Subtle Line Divider -->
-        <div class="w-full h-px bg-border/40 mb-16 relative">
-          <div class="absolute left-1/2 -ml-8 -top-8 h-16 w-16 bg-bg flex items-center justify-center">
-            <div class="h-2 w-2 rounded-full bg-accent/50 blur-[1px]"></div>
-          </div>
-        </div>
+        <div class="w-full h-px bg-border/40 mt-16 mb-16"></div>
       </div>
     </div>
   </section>
@@ -256,10 +262,40 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
         }
       );
 
-      // Removed matchMedia horizontal pinning for native scroll experience.
-      // JS Drag-to-Scroll implementation for horizontal wrapper
+      // Navigation Arrows animation
+      gsap.fromTo(
+        "#work-nav-arrows",
+        { y: 30, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: "#work",
+            start: "top 85%",
+          }
+        }
+      );
+
+      // JS Scroll Logic using Arrow buttons
       const slider = document.querySelector("#work-horizontal-wrapper") as HTMLElement;
-      if (slider) {
+      const leftBtn = document.querySelector("#scroll-left");
+      const rightBtn = document.querySelector("#scroll-right");
+
+      if (slider && leftBtn && rightBtn) {
+        // Safe card width estimation
+        const scrollDistance = window.innerWidth * 0.85;
+
+        leftBtn.addEventListener('click', () => {
+          slider.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
+        });
+
+        rightBtn.addEventListener('click', () => {
+          slider.scrollBy({ left: scrollDistance, behavior: 'smooth' });
+        });
+
+        // Add touch-friendly drag-to-scroll allowing native gestures
         let isDown = false;
         let startX: number;
         let scrollLeft: number;
@@ -267,29 +303,21 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
         slider.addEventListener('mousedown', (e) => {
           isDown = true;
           slider.classList.add('cursor-grabbing');
-          // Disabling snap for smoother drag
-          slider.classList.remove('snap-x', 'snap-mandatory');
           startX = e.pageX - slider.offsetLeft;
           scrollLeft = slider.scrollLeft;
         });
-        
         slider.addEventListener('mouseleave', () => {
           isDown = false;
           slider.classList.remove('cursor-grabbing');
-          slider.classList.add('snap-x', 'snap-mandatory');
         });
-        
         slider.addEventListener('mouseup', () => {
           isDown = false;
           slider.classList.remove('cursor-grabbing');
-          slider.classList.add('snap-x', 'snap-mandatory');
         });
-        
         slider.addEventListener('mousemove', (e) => {
           if (!isDown) return;
-          e.preventDefault();
           const x = e.pageX - slider.offsetLeft;
-          const walk = (x - startX) * 2; // Scroll-fast multiplier
+          const walk = (x - startX) * 2;
           slider.scrollLeft = scrollLeft - walk;
         });
       }
