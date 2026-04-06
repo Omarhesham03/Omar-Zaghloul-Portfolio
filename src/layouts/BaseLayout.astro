@@ -1,6 +1,7 @@
 ---
 import { ViewTransitions, fade } from 'astro:transitions';
 import '../styles/global.css';
+import FloatingNav from '../components/FloatingNav.astro';
 
 interface Props {
   title?: string;
@@ -77,6 +78,8 @@ const personSchema = {
   <body class="overflow-x-hidden antialiased" transition:animate={fade({ duration: '0.4s' })}>
     <!-- Custom Cursor -->
     <div id="custom-cursor" class="custom-cursor hidden md:block"></div>
+
+    <FloatingNav />
 
     <slot />
 
