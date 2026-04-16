@@ -79,6 +79,9 @@ const personSchema = {
     <!-- Custom Cursor -->
     <div id="custom-cursor" class="custom-cursor hidden md:block"></div>
 
+    <!-- Cursor Glow Spotlight -->
+    <div id="cursor-glow"></div>
+
     <FloatingNav />
 
     <slot />
@@ -122,6 +125,60 @@ const personSchema = {
       };
 
       document.addEventListener("astro:page-load", initCursor);
+    </script>
+
+    <script>
+      let _glowRafId: number | null = null;
+
+      const initCursorGlow = () => {
+        if (window.matchMedia('(pointer: coarse)').matches) return;
+
+        const glow = document.getElementById('cursor-glow');
+        if (!glow) return;
+
+        // Cancel any previous RAF loop from prior page navigations
+        if (_glowRafId !== null) {
+          cancelAnimationFrame(_glowRafId);
+          _glowRafId = null;
+        }
+
+        glow.style.display = 'block';
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let glowX = mouseX;
+        let glowY = mouseY;
+
+        const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+        const tick = () => {
+          glowX = lerp(glowX, mouseX, 0.15);
+          glowY = lerp(glowY, mouseY, 0.15);
+          glow.style.left = glowX + 'px';
+          glow.style.top = glowY + 'px';
+          _glowRafId = requestAnimationFrame(tick);
+        };
+
+        window.addEventListener('mousemove', (e: MouseEvent) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          glow.style.opacity = '1';
+        });
+
+        document.addEventListener('mouseleave', () => {
+          glow.style.opacity = '0';
+        });
+
+        // Grow on interactive elements
+        document.querySelectorAll('a, button, [role="link"], .project-card').forEach(el => {
+          el.addEventListener('mouseenter', () => glow.classList.add('hovering'));
+          el.addEventListener('mouseleave', () => glow.classList.remove('hovering'));
+        });
+
+        tick();
+      };
+
+      document.addEventListener('astro:page-load', initCursorGlow);
     </script>
   </body>
 </html>

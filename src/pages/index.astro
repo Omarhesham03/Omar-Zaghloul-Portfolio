@@ -207,225 +207,151 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
     import { gsap } from "gsap";
     import ScrollTrigger from "gsap/ScrollTrigger";
 
-    // Register ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
 
     const initAnimations = () => {
-      // Accessibility Check for Reduced Motion
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        gsap.set("#hero-name, #hero-position, #hero-desc, #hero-avatar, #work-header, .project-card, #about-header, .about-text, .about-grid", { opacity: 1, y: 0, scale: 1 });
+      // ── Reduced Motion: show everything immediately ────────────
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        gsap.set(
+          '#hero-name, #hero-position, #hero-desc, #hero-avatar, #work-header, #work-nav-arrows, .project-card, #about-header, #about-subheader, .about-text, .about-block, .about-closing',
+          { opacity: 1, y: 0, x: 0, scale: 1, clipPath: 'none' }
+        );
         return;
       }
 
-      // Ensure GSAP kills old tweens if navigation event fires multiple times
-      gsap.killTweensOf("#hero-name, #hero-position, #hero-desc, #hero-avatar, #work-header, .project-card, #about-header, .about-text, .about-grid");
-      
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      gsap.killTweensOf('#hero-name, #hero-position, #hero-desc, #hero-avatar, #work-header, .project-card, #about-header, .about-text');
 
-      tl.fromTo(
-        "#hero-name",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6 }
-      )
-      .fromTo(
-        "#hero-position",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6 },
-        "-=0.4"
-      )
-      .fromTo(
-        "#hero-desc",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.6 },
-        "-=0.4"
-      )
-      .fromTo(
-        "#hero-avatar",
+      // ── Hero: character-by-character stagger ──────────────────
+      const heroName = document.getElementById('hero-name');
+      if (heroName) {
+        heroName.style.perspective = '400px';
+        heroName.style.opacity = '1';
+
+        const omarChars = Array.from('Omar\u00A0').map(c =>
+          `<span class="hero-char" style="display:inline-block;opacity:0">${c}</span>`
+        ).join('');
+        const zaghloulChars = Array.from('Zaghloul').map(c =>
+          `<span class="hero-char" style="display:inline-block;opacity:0">${c}</span>`
+        ).join('');
+
+        heroName.innerHTML = `${omarChars}<span class="relative inline-block whitespace-nowrap">${zaghloulChars}<span class="absolute bottom-2 left-0 -z-10 h-[0.14em] w-full bg-accent/80"></span></span>`;
+
+        const chars = heroName.querySelectorAll('.hero-char');
+        // 13 chars total (5 "Omar " + 8 "Zaghloul")
+        const nameStaggerEnd = (chars.length - 1) * 0.035;
+
+        gsap.fromTo(chars,
+          { opacity: 0, y: 40, rotateX: -40, transformPerspective: 400 },
+          { opacity: 1, y: 0, rotateX: 0, duration: 0.6, stagger: 0.035, ease: 'back.out(1.7)' }
+        );
+
+        gsap.fromTo('#hero-position',
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: nameStaggerEnd + 0.2 }
+        );
+        gsap.fromTo('#hero-desc',
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: nameStaggerEnd + 0.35 }
+        );
+      }
+
+      // Avatar (simultaneous with name)
+      gsap.fromTo('#hero-avatar',
         { scale: 0.95, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1.0 },
-        0 // Starts simultaneously with the timeline
+        { scale: 1, opacity: 1, duration: 1.0, ease: 'power3.out' }
       );
 
-      // Work section header animation
-      gsap.fromTo(
-        "#work-header",
-        { y: 30, opacity: 0 },
+      // ── Work Header: clip-path line wipe ──────────────────────
+      gsap.fromTo('#work-header',
+        { clipPath: 'inset(0 100% 0 0)', opacity: 1 },
         {
-          y: 0,
-          opacity: 1,
+          clipPath: 'inset(0 0% 0 0)',
           duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: "#work",
-            start: "top 85%",
-          }
+          ease: 'power3.inOut',
+          scrollTrigger: { trigger: '#work', start: 'top 80%' }
         }
       );
 
-      // Navigation Arrows animation
-      gsap.fromTo(
-        "#work-nav-arrows",
+      gsap.fromTo('#work-nav-arrows',
         { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: "#work",
-            start: "top 85%",
-          }
-        }
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '#work', start: 'top 85%' } }
       );
 
-      // JS Scroll Logic using Arrow buttons
-      const slider = document.querySelector("#work-horizontal-wrapper") as HTMLElement;
-      const leftBtn = document.querySelector("#scroll-left");
-      const rightBtn = document.querySelector("#scroll-right");
+      // Arrow button scroll logic
+      const slider = document.querySelector('#work-horizontal-wrapper') as HTMLElement;
+      const leftBtn = document.querySelector('#scroll-left');
+      const rightBtn = document.querySelector('#scroll-right');
 
       if (slider && leftBtn && rightBtn) {
-        // Safe card width estimation
         const scrollDistance = window.innerWidth * 0.85;
+        leftBtn.addEventListener('click', () => slider.scrollBy({ left: -scrollDistance, behavior: 'smooth' }));
+        rightBtn.addEventListener('click', () => slider.scrollBy({ left: scrollDistance, behavior: 'smooth' }));
 
-        leftBtn.addEventListener('click', () => {
-          slider.scrollBy({ left: -scrollDistance, behavior: 'smooth' });
-        });
-
-        rightBtn.addEventListener('click', () => {
-          slider.scrollBy({ left: scrollDistance, behavior: 'smooth' });
-        });
-
-        // Add touch-friendly drag-to-scroll allowing native gestures
         let isDown = false;
         let startX: number;
         let scrollLeft: number;
-
-        slider.addEventListener('mousedown', (e) => {
-          isDown = true;
-          slider.classList.add('cursor-grabbing');
-          startX = e.pageX - slider.offsetLeft;
-          scrollLeft = slider.scrollLeft;
-        });
-        slider.addEventListener('mouseleave', () => {
-          isDown = false;
-          slider.classList.remove('cursor-grabbing');
-        });
-        slider.addEventListener('mouseup', () => {
-          isDown = false;
-          slider.classList.remove('cursor-grabbing');
-        });
-        slider.addEventListener('mousemove', (e) => {
-          if (!isDown) return;
-          const x = e.pageX - slider.offsetLeft;
-          const walk = (x - startX) * 2;
-          slider.scrollLeft = scrollLeft - walk;
-        });
+        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('cursor-grabbing'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
+        slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('cursor-grabbing'); });
+        slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('cursor-grabbing'); });
+        slider.addEventListener('mousemove', (e) => { if (!isDown) return; slider.scrollLeft = scrollLeft - (e.pageX - slider.offsetLeft - startX) * 2; });
       }
 
-      // GSAP animate the newly configured project cards with simple fade up
-      const cards = gsap.utils.toArray(".project-card");
-      cards.forEach((card: any, index: number) => {
-        gsap.fromTo(
-          card,
-          { y: 30, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-            }
-          }
-        );
+      // Project cards: fade up
+      (gsap.utils.toArray('.project-card') as Element[]).forEach((card) => {
+        gsap.fromTo(card, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: card, start: 'top 85%' } });
       });
 
-      // About section header animation
-      gsap.fromTo(
-        "#about-header",
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: "#about-header",
-            start: "top 85%",
-          }
-        }
-      );
+      // ── About: headers ─────────────────────────────────────────
+      gsap.fromTo('#about-header', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '#about-header', start: 'top 85%' } });
+      gsap.fromTo('#about-subheader', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '#about-subheader', start: 'top 85%' } });
 
-      // About subheading animation
-      gsap.fromTo(
-        "#about-subheader",
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: "#about-subheader",
-            start: "top 85%",
-          }
-        }
-      );
+      // ── About First Paragraph: word-by-word scrub reveal ──────
+      const aboutParagraphs = document.querySelectorAll('.about-text');
+      const firstAbout = aboutParagraphs[0] as HTMLElement | undefined;
 
-      // About bio text animation
-      gsap.fromTo(
-        ".about-text",
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".about-text",
-            start: "top 85%",
-          }
-        }
-      );
+      if (firstAbout) {
+        if (window.matchMedia('(pointer: coarse)').matches) {
+          // Mobile: simple fade up
+          gsap.fromTo(firstAbout, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: firstAbout, start: 'top 85%' } });
+        } else {
+          // Desktop: word-by-word tied to scroll position
+          const words = (firstAbout.textContent?.trim() || '').split(/\s+/);
+          firstAbout.style.opacity = '1';
+          firstAbout.innerHTML = words.map(w =>
+            `<span class="about-word" style="display:inline;opacity:0.12;color:#6B7280">${w}</span>`
+          ).join(' ');
 
-      // About blocks vertical list animation
-      gsap.fromTo(
-        ".about-block",
+          gsap.to('.about-word', {
+            opacity: 1,
+            color: '#E0E0E0',
+            stagger: { each: 0.03 },
+            ease: 'none',
+            scrollTrigger: {
+              trigger: firstAbout,
+              start: 'top 80%',
+              end: 'center center',
+              scrub: true,
+            }
+          });
+        }
+      }
+
+      // Second about-text: normal fade up
+      if (aboutParagraphs[1]) {
+        gsap.fromTo(aboutParagraphs[1], { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: aboutParagraphs[1], start: 'top 85%' } });
+      }
+
+      // Capability blocks
+      gsap.fromTo('.about-block',
         { x: -20, opacity: 0 },
-        {
-          x: 0,
-          opacity: 1,
-          duration: 0.8,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".about-block",
-            start: "top 85%",
-          }
-        }
+        { x: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out', scrollTrigger: { trigger: '.about-block', start: 'top 85%' } }
       );
 
-      // About closing animation
-      gsap.fromTo(
-        ".about-closing",
-        { y: 20, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".about-closing",
-            start: "top 85%",
-          }
-        }
-      );
-
+      // Closing paragraph
+      gsap.fromTo('.about-closing', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.about-closing', start: 'top 85%' } });
     };
 
-    document.addEventListener("astro:page-load", initAnimations);
+    document.addEventListener('astro:page-load', initAnimations);
   </script>
 
   <style>
