@@ -110,23 +110,23 @@ export const translations: Record<string, Record<string, string>> = {
 
     // About Section
     'about.header': 'Hakkımda',
-    'about.subheader': 'İşletmenizle birlikte büyüyen sistemler inşa ediyorum — ona rağmen değil.',
-    'about.p1': 'Çoğu işletme, talep azaldığı için değil, iç sistemleri yetişemediği için bir tavana çarpar. WhatsApp gruplarına, elektronik tablolara ve birbirinden kopuk araçlara dağılmış operasyonlar. Beş farklı yerde yaşayan ama hiçbirinde doğru olmayan veriler. Dakikalar alması gereken işlere saatlerini harcayan ekipler. Ben bu sürtünmeyi kalıcı olarak ortadan kaldıran platformları inşa ediyorum.',
+    'about.subheader': 'İşletmenizle birlikte büyüyen sistemler inşa ediyorum — onu kısıtlayacak şekilde değil.',
+    'about.p1': 'Çoğu işletme, talep azaldığı için değil, iç sistemleri yetişemediği için büyüme sınırına takılır. WhatsApp gruplarına, elektronik tablolara ve birbirinden kopuk araçlara dağılmış operasyonlar. Beş farklı yerde tutulan ama hiçbirinde doğru olmayan veriler. Dakikalar alması gereken işlere saatlerini harcayan ekipler. Ben bu sürtünmeyi kalıcı olarak ortadan kaldıran platformları inşa ediyorum.',
     'about.p2': 'RuneX\'i tam da bunun için kurdum. İşletmelerle iş birliği yaparak operasyonel darboğazları ölçeklenebilir, otomatik altyapıya dönüştürüyorum. Çalışmalarım dört alanda yoğunlaşıyor:',
     
     'about.block1.title': 'Özel Web & İş Platformları',
-    'about.block1.desc': 'Ekibinizin operasyonları yönettiği ve müşterilerinizin kendi ilerlemelerini gerçek zamanlı takip ettiği merkezi paneller ve portallar. Onkoloji kliniklerinden tedavi döngülerini koordine eden eğitim ajanslarına, yüzlerce öğrenci başvurusunu yöneten platformlara kadar — her biri işletmenizin gerçekte nasıl çalıştığına göre inşa edilir, jenerik bir aracın düşündüğü gibi değil.',
+    'about.block1.desc': 'Ekibinizin operasyonları yönettiği ve müşterilerinizin kendi ilerlemelerini gerçek zamanlı takip ettiği merkezi paneller ve portallar. Tedavi döngülerini koordine eden onkoloji kliniklerinden, yüzlerce öğrenci başvurusunu yöneten eğitim ajanslarına kadar — her biri işletmenizin gerçekte nasıl çalıştığına göre inşa edilir, jenerik bir aracın düşündüğü gibi değil.',
 
     'about.block2.title': 'Mobil Uygulamalar',
-    'about.block2.desc': 'Hizmetinizi doğrudan kullanıcılarınızın eline veren çapraz platform uygulamaları. Entegre chatbot koçluğuna sahip yapay zeka destekli fitness asistanlarından tüketici odaklı rezervasyon deneyimlerine kadar, tek bir kod tabanından hem iOS hem de Android için kaliteden ödün vermeden geliştiriyorum.',
+    'about.block2.desc': 'Hizmetinizi doğrudan kullanıcılarınızın eline veren çapraz platform uygulamaları. Entegre chatbot koçluğuna sahip yapay zeka destekli fitness asistanlarından tüketici odaklı rezervasyon deneyimlerine kadar, tek bir kod tabanından hem iOS hem de Android için kullanıcı deneyiminden ödün vermeden geliştiriyorum.',
 
     'about.block3.title': 'Yapay Zeka & İş Akışı Otomasyonu',
-    'about.block3.desc': 'Tekrarlayan her süreç otomatikleştirilmelidir. Mevcut araçlarınızı birbirine bağlayan, manuel veri transferini ortadan kaldıran ve ekibinizin saatler harcayacağı içgörüleri ortaya çıkaran akıllı iş akışları tasarlıyorum. Otomatik oluşturulan tedavi takvimleri, akıllı belge yönlendirme, insan müdahalesi gerektirmeyen tetikleyiciler — hedef her zaman gereksiz işleri kaldırıp ekibinizin büyümeye odaklanmasını sağlamak.',
+    'about.block3.desc': 'Tekrarlayan her süreç otomatikleştirilmelidir. Mevcut araçlarınızı birbirine bağlayan, manuel veri transferini ortadan kaldıran ve ekibinizin derlemek için saatler harcayacağı içgörüleri ortaya çıkaran akıllı iş akışları tasarlıyorum. Otomatik oluşturulan tedavi takvimleri, akıllı belge yönlendirme, insan müdahalesi gerektirmeyen tetikleyiciler — hedef her zaman angaryayı ortadan kaldırıp ekibinizin büyümeye odaklanmasını sağlamak.',
 
     'about.block4.title': 'Hızlı Lansman & E-Ticaret',
     'about.block4.desc': 'Her proje altı aylık bir geliştirme döngüsü gerektirmez. Hızlı hareket etmesi gereken işletmeler için — bir rezervasyon platformu kurmak, içerik odaklı bir site oluşturmak, bir e-ticaret vitrini açmak — teknolojiyi zaman çizelgenize uygun şekilde eşleştirip, büyüdüğünüzde çöpe atılmayacak bir altyapıyla sizi hızla pazara taşıyorum.',
 
-    'about.closing': 'Teknoloji ancak işinizi ileriye taşıyorsa anlam ifade eder. Her projeye bilgisayar mühendisliği ve ürün yönetimi geçmişimi taşıyorum — bu da sadece şartnameye göre kod yazan bir geliştirici değil, iş hedefini anlayan ve onu hayata geçirecek teknik altyapıyı kuran bir mimar aldığınız anlamına gelir. Tek muhatap. Devir teslim yok. Değişen ekip yok.',
+    'about.closing': 'Teknoloji ancak işinizi ileriye taşıyorsa anlam ifade eder. Her projeye bilgisayar mühendisliği ve ürün yönetimi geçmişimi taşıyorum — bu da sadece şartnameye göre kod yazan bir geliştirici değil, iş hedefini anlayan ve onu hayata geçirecek teknik altyapıyı kuran bir mimar aldığınız anlamına gelir. Tek muhatap. Devir teslim yok. Sürekli değişen deneyimsiz (junior) çalışanlar yok.',
 
     // Selected Work
     'work.header': 'Seçili Projeler',
@@ -137,7 +137,7 @@ export const translations: Record<string, Record<string, string>> = {
     'projects.altinkapi.subtitle': 'Hac & Umre Rezervasyon Platformu',
     'projects.altinkapi.category': 'Seyahat / E-Ticaret',
     'projects.educounsellor.subtitle': 'White-Label Öğrenci Başvuru Yönetim Paneli',
-    'projects.educounsellor.category': 'EğitimTech / SaaS',
+    'projects.educounsellor.category': 'Eğitim Teknolojileri / SaaS',
     'projects.spotter.subtitle': 'Yapay Zeka Destekli Beslenme & Fitness Asistanı',
     'projects.spotter.category': 'Sağlık & Fitness / Mobil',
     'projects.reverse-swing.subtitle': 'Kriket Analiz & Yazı Platformu',
@@ -185,7 +185,7 @@ export const translations: Record<string, Record<string, string>> = {
     'projects.reverse-swing.whereItStands': 'Yönetici paneli ve halka açık okuma deneyimi tamamlanmış olarak tam işlevsel. Şu anda lansman öncesi aşamasında — genel sürümden (public release) önce özel alan adı (custom domain) kurulumu ve başlangıç içeriklerinin hazırlanmasını bekliyor.',
 
     // Contact / Footer
-    'contact.title': 'İletişime Geçin',
+    'contact.title': 'Görüşelim',
     'contact.desc': 'Aklınızda bir proje mi var? Birlikte inşa edelim.',
     'footer.copy': '© 2026 Omar Zaghloul / RuneX'
   }
