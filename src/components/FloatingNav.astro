@@ -8,53 +8,64 @@ const isProjectPage = pathname.startsWith('/projects/');
   class="fixed left-1/2 top-6 z-[100] w-[calc(100%-2rem)] md:w-auto -translate-x-1/2 -translate-y-[150%] rounded-[9999px] border border-white/5 bg-[#111118]/70 px-6 py-3 shadow-[0_4px_30px_rgba(0,0,0,0.1)] backdrop-blur-md backdrop-saturate-120 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] md:px-8"
   style="will-change: transform;"
 >
-  <div class="flex items-center justify-between gap-12">
+  <div class="flex items-center justify-between gap-12 w-full">
     <!-- Left: Logo or Back Link -->
     <a 
       href={isProjectPage ? "/" : "#"} 
       class="group relative font-display text-lg font-bold tracking-wider text-accent transition-colors hover:text-accent/80"
+      data-i18n={isProjectPage ? "nav.back" : "nav.logo"}
     >
       {isProjectPage ? "← Back" : "OZ"}
     </a>
 
-    <!-- Right: Desktop Links -->
-    <nav class="hidden items-center gap-6 md:flex">
-      {isProjectPage ? (
-        <>
-          <a href="/#work" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent">Work</a>
-          <a href="/#about" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent">About</a>
-          <a href="/#contact" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent">Contact</a>
-        </>
-      ) : (
-        <>
-          <a href="#work" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent">Work</a>
-          <a href="#about" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent">About</a>
-          <a href="#contact" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent">Contact</a>
-        </>
-      )}
-    </nav>
+    <!-- Right Side Container -->
+    <div class="flex items-center gap-6 ml-auto">
+      <!-- Desktop Links -->
+      <nav class="hidden items-center gap-6 md:flex">
+        {isProjectPage ? (
+          <>
+            <a href="/#work" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent" data-i18n="nav.work">Work</a>
+            <a href="/#about" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent" data-i18n="nav.about">About</a>
+            <a href="/#contact" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent" data-i18n="nav.contact">Contact</a>
+          </>
+        ) : (
+          <>
+            <a href="#work" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent" data-i18n="nav.work">Work</a>
+            <a href="#about" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent" data-i18n="nav.about">About</a>
+            <a href="#contact" class="nav-link relative text-sm font-medium text-text-muted transition-colors hover:text-accent" data-i18n="nav.contact">Contact</a>
+          </>
+        )}
+      </nav>
 
-    <!-- Right: Mobile Hamburger -->
-    <button id="mobile-menu-btn" class="flex h-6 w-6 flex-col items-center justify-center gap-1.5 md:hidden" aria-label="Toggle menu">
-      <span class="block h-[2px] w-full bg-accent transition-transform duration-300 origin-center top-line"></span>
-      <span class="block h-[2px] w-full bg-accent transition-opacity duration-300 middle-line"></span>
-      <span class="block h-[2px] w-full bg-accent transition-transform duration-300 origin-center bottom-line"></span>
-    </button>
+      <!-- Language Toggle -->
+      <div id="language-toggle" class="flex items-center gap-[6px] font-display text-sm font-medium">
+        <button class="lang-btn text-accent transition-colors hover:text-accent" data-lang="en">EN</button>
+        <span class="text-text-muted/50 text-[10px]">|</span>
+        <button class="lang-btn text-text-muted transition-colors hover:text-accent" data-lang="tr">TR</button>
+      </div>
+
+      <!-- Mobile Hamburger -->
+      <button id="mobile-menu-btn" class="flex h-6 w-6 flex-col items-center justify-center gap-1.5 md:hidden" aria-label="Toggle menu">
+        <span class="block h-[2px] w-full bg-accent transition-transform duration-300 origin-center top-line"></span>
+        <span class="block h-[2px] w-full bg-accent transition-opacity duration-300 middle-line"></span>
+        <span class="block h-[2px] w-full bg-accent transition-transform duration-300 origin-center bottom-line"></span>
+      </button>
+    </div>
   </div>
 
   <!-- Mobile Menu Dropdown -->
   <div id="mobile-menu" class="hidden flex-col gap-4 pt-6 pb-2 md:hidden">
     {isProjectPage ? (
       <>
-        <a href="/#work" class="mobile-link text-lg font-medium text-text-muted hover:text-accent">Work</a>
-        <a href="/#about" class="mobile-link text-lg font-medium text-text-muted hover:text-accent">About</a>
-        <a href="/#contact" class="mobile-link text-lg font-medium text-text-muted hover:text-accent">Contact</a>
+        <a href="/#work" class="mobile-link text-lg font-medium text-text-muted hover:text-accent" data-i18n="nav.work">Work</a>
+        <a href="/#about" class="mobile-link text-lg font-medium text-text-muted hover:text-accent" data-i18n="nav.about">About</a>
+        <a href="/#contact" class="mobile-link text-lg font-medium text-text-muted hover:text-accent" data-i18n="nav.contact">Contact</a>
       </>
     ) : (
       <>
-        <a href="#work" class="mobile-link text-lg font-medium text-text-muted hover:text-accent">Work</a>
-        <a href="#about" class="mobile-link text-lg font-medium text-text-muted hover:text-accent">About</a>
-        <a href="#contact" class="mobile-link text-lg font-medium text-text-muted hover:text-accent">Contact</a>
+        <a href="#work" class="mobile-link text-lg font-medium text-text-muted hover:text-accent" data-i18n="nav.work">Work</a>
+        <a href="#about" class="mobile-link text-lg font-medium text-text-muted hover:text-accent" data-i18n="nav.about">About</a>
+        <a href="#contact" class="mobile-link text-lg font-medium text-text-muted hover:text-accent" data-i18n="nav.contact">Contact</a>
       </>
     )}
   </div>
@@ -99,11 +110,20 @@ const isProjectPage = pathname.startsWith('/projects/');
   .menu-open .bottom-line {
     transform: translateY(-8px) rotate(-45deg);
   }
+
+  /* Language Transition Classes */
+  :global(.lang-transition) {
+    transition: opacity 0.2s ease-in-out !important;
+  }
+  :global(.lang-swapping) {
+    opacity: 0 !important;
+  }
 </style>
 
 <script>
   import { gsap } from "gsap";
   import ScrollTrigger from "gsap/ScrollTrigger";
+  import { translations } from "../utils/translations";
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -198,7 +218,7 @@ const isProjectPage = pathname.startsWith('/projects/');
     }
 
     // Active Section highlighting
-    const sections = document.querySelectorAll('section[id]');
+    const sections = document.querySelectorAll('section[id], footer[id]');
     
     const updateActiveLink = () => {
       const scrollPosition = window.scrollY + window.innerHeight / 3;
@@ -208,7 +228,12 @@ const isProjectPage = pathname.startsWith('/projects/');
         const top = (section as HTMLElement).offsetTop;
         const height = (section as HTMLElement).offsetHeight;
         if (scrollPosition >= top && scrollPosition < top + height) {
-          currentSectionId = section.getAttribute('id') || "";
+          const id = section.getAttribute('id');
+          if (id === 'footer-section' || id === 'contact') {
+            currentSectionId = 'contact';
+          } else {
+            currentSectionId = id || "";
+          }
         }
       });
 
@@ -223,6 +248,74 @@ const isProjectPage = pathname.startsWith('/projects/');
 
     window.addEventListener('scroll', updateActiveLink);
     updateActiveLink(); // Initial check
+
+    // Translation Logic
+    const applyTranslation = (lang: string, withAnimation = true) => {
+      const t = translations[lang] || translations['en'];
+      const elements = document.querySelectorAll('[data-i18n], [data-i18n-array]');
+      
+      const updateDom = () => {
+        document.querySelectorAll("[data-i18n]").forEach(el => {
+          const key = el.getAttribute("data-i18n");
+          if (key && t[key]) {
+            el.innerHTML = t[key];
+          }
+        });
+        document.querySelectorAll("[data-i18n-array]").forEach(el => {
+          const key = el.getAttribute("data-i18n-array");
+          if (key && t[key]) {
+            const contents = t[key].split('\n\n').filter(Boolean);
+            el.innerHTML = contents.map(p => `<p>${p}</p>`).join('');
+          }
+        });
+      };
+
+      if (withAnimation) {
+        elements.forEach(el => el.classList.add('lang-transition'));
+        elements.forEach(el => el.classList.add('lang-swapping'));
+        
+        setTimeout(() => {
+          updateDom();
+          elements.forEach(el => el.classList.remove('lang-swapping'));
+          setTimeout(() => {
+            elements.forEach(el => el.classList.remove('lang-transition'));
+            ScrollTrigger.refresh();
+          }, 200); // Wait for fade in
+        }, 200); // Wait for fade out
+      } else {
+        updateDom();
+      }
+
+      // Update toggles
+      document.querySelectorAll(".lang-btn").forEach(btn => {
+        if (btn.getAttribute("data-lang") === lang) {
+          btn.classList.add("text-accent");
+          btn.classList.remove("text-text-muted");
+        } else {
+          btn.classList.add("text-text-muted");
+          btn.classList.remove("text-accent");
+        }
+      });
+    };
+
+    // Initialize Language from localStorage
+    const savedLang = localStorage.getItem('i18n_lang') || 'en';
+    if (savedLang !== 'en') {
+      applyTranslation(savedLang, false);
+    }
+
+    // Toggle click events
+    document.querySelectorAll(".lang-btn").forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const targetLang = (e.currentTarget as HTMLElement).getAttribute('data-lang');
+        const currentLang = localStorage.getItem('i18n_lang') || 'en';
+        if (targetLang && targetLang !== currentLang) {
+          localStorage.setItem('i18n_lang', targetLang);
+          applyTranslation(targetLang);
+        }
+      });
+    });
+
   };
 
   document.addEventListener("astro:page-load", initNav);

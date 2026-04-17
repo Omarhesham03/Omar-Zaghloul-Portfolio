@@ -29,13 +29,13 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
       
       <!-- Text Content (Left) -->
       <div class="relative z-20 mt-12 flex flex-col items-center text-center lg:mt-0 lg:w-1/2 lg:items-start lg:text-left">
-        <h1 id="hero-name" class="font-display text-[clamp(2.5rem,10vw,6rem)] font-bold leading-none tracking-tight text-text opacity-0">
+        <h1 id="hero-name" class="font-display text-[clamp(2.5rem,10vw,6rem)] font-bold leading-none tracking-tight text-text opacity-0" data-i18n="hero.name">
           Omar <span class="relative inline-block whitespace-nowrap">Zaghloul<span class="absolute bottom-2 left-0 -z-10 h-[0.14em] w-full bg-accent/80"></span></span>
         </h1>
-        <h2 id="hero-position" class="mt-4 font-display text-2xl font-light tracking-wide text-text/90 opacity-0 md:text-3xl">
+        <h2 id="hero-position" class="mt-4 font-display text-2xl font-light tracking-wide text-text/90 opacity-0 md:text-3xl" data-i18n="hero.position">
           Product Engineer & AI Automation Specialist
         </h2>
-        <p id="hero-desc" class="mt-6 max-w-md font-body text-lg text-text-muted opacity-0">
+        <p id="hero-desc" class="mt-6 max-w-md font-body text-lg text-text-muted opacity-0" data-i18n="hero.desc">
           Full-Stack Developer & Technical Founder at RuneX
         </p>
       </div>
@@ -78,7 +78,7 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
     <div class="relative w-full overflow-hidden" id="work-pin-container">
       <div class="px-6 lg:px-16 mb-12 flex items-end justify-between" id="work-header-container">
         <!-- Section Header -->
-        <h2 id="work-header" class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0">
+        <h2 id="work-header" class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0" data-i18n="work.header">
           Selected Work
         </h2>
         
@@ -117,13 +117,13 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
             
             <!-- Card Details -->
             <div class="flex flex-col flex-grow">
-              <span class="mb-3 text-xs font-semibold tracking-wider text-text-muted uppercase">
+              <span class="mb-3 text-xs font-semibold tracking-wider text-text-muted uppercase" data-i18n={`projects.${project.slug}.category`}>
                 {project.data.category}
               </span>
               <h3 class="font-display text-2xl font-bold text-text md:text-3xl">
                 {project.data.title}
               </h3>
-              <p class="mt-2 font-body text-base text-text-muted/80">
+              <p class="mt-2 font-body text-base text-text-muted/80" data-i18n={`projects.${project.slug}.subtitle`}>
                 {project.data.subtitle}
               </p>
             </div>
@@ -136,20 +136,20 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
   <!-- About Section -->
   <section class="relative w-full bg-bg px-6 py-32 lg:px-16" id="about">
     <div class="mx-auto w-full max-w-[900px]">
-      <h2 id="about-header" class="mb-2 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0">
+      <h2 id="about-header" class="mb-2 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0" data-i18n="about.header">
         About
       </h2>
-      <h3 id="about-subheader" class="mb-12 font-display text-[clamp(1.5rem,3vw,2.5rem)] text-accent opacity-0">
+      <h3 id="about-subheader" class="mb-12 font-display text-[clamp(1.5rem,3vw,2.5rem)] text-accent opacity-0" data-i18n="about.subheader">
         Building systems that grow with your business — not against it.
       </h3>
 
       <div class="flex flex-col">
         <!-- Bio Paragraphs -->
         <div class="flex flex-col gap-6 mb-16">
-          <p class="about-text font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0">
+          <p class="about-text font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0" data-i18n="about.p1">
             Most businesses hit a ceiling not because demand slows down, but because their internal systems can't keep up. Operations scattered across WhatsApp threads, spreadsheets, and disconnected tools. Data that lives in five places but is accurate in none of them. Teams spending hours on work that should take minutes. I build the platforms that permanently replace that friction.
           </p>
-          <p class="about-text font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0">
+          <p class="about-text font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0" data-i18n="about.p2">
             Through <span class="font-semibold text-accent">RuneX</span>, I partner with businesses to turn operational bottlenecks into scalable, automated infrastructure. My work spans four areas:
           </p>
         </div>
@@ -158,39 +158,39 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
         <div class="flex flex-col gap-8 mb-12">
           <!-- Block 1 -->
           <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
-            <h4 class="mb-2 font-display text-xl font-bold text-text">Custom Web & Business Platforms</h4>
-            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted">
+            <h4 class="mb-2 font-display text-xl font-bold text-text" data-i18n="about.block1.title">Custom Web & Business Platforms</h4>
+            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted" data-i18n="about.block1.desc">
               Centralized dashboards and portals where your team manages operations and your clients track their own progress in real time. From oncology clinics coordinating treatment cycles to education agencies managing hundreds of student applications across universities — each platform is built around how your business actually runs, not how a generic tool thinks it should.
             </p>
           </div>
           
           <!-- Block 2 -->
           <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
-            <h4 class="mb-2 font-display text-xl font-bold text-text">Mobile Applications</h4>
-            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted">
+            <h4 class="mb-2 font-display text-xl font-bold text-text" data-i18n="about.block2.title">Mobile Applications</h4>
+            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted" data-i18n="about.block2.desc">
               Cross-platform apps that put your service directly in your users' hands. From AI-powered fitness companions with integrated chatbot coaching to consumer-facing booking experiences, I build for both iOS and Android from a single codebase without compromising on feel.
             </p>
           </div>
           
           <!-- Block 3 -->
           <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
-            <h4 class="mb-2 font-display text-xl font-bold text-text">AI & Workflow Automation</h4>
-            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted">
+            <h4 class="mb-2 font-display text-xl font-bold text-text" data-i18n="about.block3.title">AI & Workflow Automation</h4>
+            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted" data-i18n="about.block3.desc">
               If a process is repetitive, it should be automated. I design intelligent workflows that connect your existing tools, eliminate manual data transfer, and surface insights your team would otherwise spend hours compiling. Auto-generated treatment schedules, smart document routing, pipeline triggers that fire without human intervention — the goal is always to remove the busywork so your team focuses on growth.
             </p>
           </div>
 
           <!-- Block 4 -->
           <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
-            <h4 class="mb-2 font-display text-xl font-bold text-text">Rapid Deployment & E-Commerce</h4>
-            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted">
+            <h4 class="mb-2 font-display text-xl font-bold text-text" data-i18n="about.block4.title">Rapid Deployment & E-Commerce</h4>
+            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted" data-i18n="about.block4.desc">
               Not every project needs a six-month build cycle. For businesses that need to move fast — launching a booking platform, standing up a content-driven site, deploying an e-commerce storefront — I match the right technology to the timeline, getting you to market quickly with architecture that won't need to be thrown away when you scale.
             </p>
           </div>
         </div>
         
         <!-- Closing Paragraph -->
-        <p class="about-closing mt-8 font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0">
+        <p class="about-closing mt-8 font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0" data-i18n="about.closing">
           Technology only matters if it drives your business forward. I bring a background in computer engineering and product management to every engagement — which means you're not just getting a developer who writes code to spec. You're getting an architect who understands the business objective and builds the exact technical foundation to execute it. One point of contact. No handoffs. No rotating juniors.
         </p>
 
