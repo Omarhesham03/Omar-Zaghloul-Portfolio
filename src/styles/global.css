@@ -29,6 +29,8 @@
     font-family: 'Inter', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -86,4 +88,35 @@
 .hover-link:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+
+/* Cursor Glow Spotlight (desktop / fine-pointer only) */
+@property --glow-alpha {
+  syntax: '<number>';
+  inherits: false;
+  initial-value: 0.06;
+}
+
+#cursor-glow {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  --glow-alpha: 0.06;
+  background: radial-gradient(circle, rgba(0, 229, 255, var(--glow-alpha)) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.5s ease, --glow-alpha 0.3s ease;
+  will-change: left, top;
+}
+
+#cursor-glow.hovering {
+  --glow-alpha: 0.10;
+  width: 400px;
+  height: 400px;
 }
