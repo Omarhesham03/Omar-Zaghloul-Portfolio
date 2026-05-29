@@ -17,7 +17,7 @@ export const translations: Record<string, Record<string, string>> = {
     'about.header': 'About',
     'about.subheader': 'Building systems that grow with your business — not against it.',
     'about.p1': 'Most businesses hit a ceiling not because demand slows down, but because their internal systems can\'t keep up. Operations scattered across WhatsApp threads, spreadsheets, and disconnected tools. Data that lives in five places but is accurate in none of them. Teams spending hours on work that should take minutes. I build the platforms that permanently replace that friction.',
-    'about.p2': 'Through <span class="font-semibold text-accent">RuneX</span>, I partner with businesses to turn operational bottlenecks into scalable, automated infrastructure. My work spans four areas:',
+    'about.p2': 'I partner with businesses to turn operational bottlenecks into scalable, automated infrastructure. My work spans four areas:',
     
     'about.block1.title': 'Custom Web & Business Platforms',
     'about.block1.desc': 'Centralized dashboards and portals where your team manages operations and your clients track their own progress in real time. From oncology clinics coordinating treatment cycles to education agencies managing hundreds of student applications across universities — each platform is built around how your business actually runs, not how a generic tool thinks it should.',
@@ -112,7 +112,7 @@ export const translations: Record<string, Record<string, string>> = {
     'about.header': 'Hakkımda',
     'about.subheader': 'İşletmenizle birlikte büyüyen sistemler inşa ediyorum — onu kısıtlayacak şekilde değil.',
     'about.p1': 'Çoğu işletme, talep azaldığı için değil, iç sistemleri yetişemediği için büyüme sınırına takılır. WhatsApp gruplarına, elektronik tablolara ve birbirinden kopuk araçlara dağılmış operasyonlar. Beş farklı yerde tutulan ama hiçbirinde doğru olmayan veriler. Dakikalar alması gereken işlere saatlerini harcayan ekipler. Ben bu sürtünmeyi kalıcı olarak ortadan kaldıran platformları inşa ediyorum.',
-    'about.p2': 'RuneX\'i tam da bunun için kurdum. İşletmelerle iş birliği yaparak operasyonel darboğazları ölçeklenebilir, otomatik altyapıya dönüştürüyorum. Çalışmalarım dört alanda yoğunlaşıyor:',
+    'about.p2': 'İşletmelerle iş birliği yaparak operasyonel darboğazları ölçeklenebilir, otomatik altyapıya dönüştürüyorum. Çalışmalarım dört alanda yoğunlaşıyor:',
     
     'about.block1.title': 'Özel Web & İş Platformları',
     'about.block1.desc': 'Ekibinizin operasyonları yönettiği ve müşterilerinizin kendi ilerlemelerini gerçek zamanlı takip ettiği merkezi paneller ve portallar. Tedavi döngülerini koordine eden onkoloji kliniklerinden, yüzlerce öğrenci başvurusunu yöneten eğitim ajanslarına kadar — her biri işletmenizin gerçekte nasıl çalıştığına göre inşa edilir, jenerik bir aracın düşündüğü gibi değil.',

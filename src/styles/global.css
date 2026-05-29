@@ -15,8 +15,8 @@
   --color-bg:          #0A0A0F;
   --color-text:        #E0E0E0;
   --color-text-muted:  #6B7280;
-  --color-accent:      #00E5FF;
-  --color-accent-dim:  #00B8D4;
+  --color-accent:      #C8F04D;
+  --color-accent-dim:  #A8CC30;
   --color-surface:     #111118;
   --color-border:      #1E1E2E;
 }
@@ -61,7 +61,7 @@
 .custom-cursor.hovering {
   width: 40px;
   height: 40px;
-  background-color: rgba(0, 229, 255, 0.08);
+  background-color: rgba(200, 240, 77, 0.08);
   border-width: 1px;
 }
 
@@ -106,7 +106,7 @@
   height: 300px;
   border-radius: 50%;
   --glow-alpha: 0.06;
-  background: radial-gradient(circle, rgba(0, 229, 255, var(--glow-alpha)) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(200, 240, 77, var(--glow-alpha)) 0%, transparent 70%);
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
