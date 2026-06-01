@@ -5,6 +5,11 @@
       "has": [{ "type": "host", "value": "omarzaghloul.com" }],
       "destination": "https://www.omarzaghloul.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/((?!.*\\.[a-zA-Z0-9]+$).*[^/])",
+      "destination": "/$1/",
+      "permanent": true
     }
   ]
 }
