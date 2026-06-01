@@ -5,17 +5,19 @@ import FloatingNav from '../components/FloatingNav.astro';
 
 interface Props {
   title?: string;
-  description?: string;
+  description: string;
   ogImage?: string;
+  canonicalPath?: string;
 }
 
 const {
   title = 'Omar Zaghloul — Portfolio',
-  description = 'Software developer portfolio showcasing projects and experience.',
+  description,
   ogImage = '/og-image.png',
+  canonicalPath,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin);
+const canonicalURL = new URL(canonicalPath ?? Astro.url.pathname, 'https://www.omarzaghloul.com').href;
 
 const personSchema = {
   "@context": "https://schema.org",

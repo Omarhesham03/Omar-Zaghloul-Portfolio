@@ -13,6 +13,8 @@ const projectsCollection = defineCollection({
     thumbnail: image(),
     order: z.number(),
     heroTagline: z.string(),
+    seoTitle: z.string().optional(),
+    seoDescription: z.string().optional(),
     problem: z.string(),
     solution: z.string(),
     technicalDecisions: z.string(),

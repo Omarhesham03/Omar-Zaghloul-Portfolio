@@ -34,8 +34,8 @@ const images = project.data.images || [];
 ---
 
 <BaseLayout 
-  title={`${project.data.title} — Omar Zaghloul`} 
-  description={project.data.heroTagline || project.data.subtitle}
+  title={project.data.seoTitle ?? `${project.data.title} — Omar Zaghloul`}
+  description={project.data.seoDescription ?? project.data.heroTagline ?? project.data.subtitle}
   ogImage={project.data.thumbnail}
 >
   <main class="w-full bg-bg">
