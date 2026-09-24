@@ -6,16 +6,27 @@ import { Image } from 'astro:assets';
 
 const projects = await getCollection('projects');
 const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
+
+// Map projects to their outcome captions and categories
+const projectMeta: Record<string, { category: string; caption: string }> = {
+  oncoflow:       { category: 'Healthcare / SaaS',       caption: 'Replaced paper tracking with one dashboard for oncology treatment cycles.' },
+  altinkapi:      { category: 'Travel / E-Commerce',     caption: 'Bilingual Hajj and Umrah booking platform with live availability.' },
+  educounsellor:  { category: 'EdTech / SaaS',           caption: 'White label dashboard replacing WhatsApp chaos for application agencies.' },
+  spotter:        { category: 'Health & Fitness / Mobile',caption: 'One app replacing four for tracking, coaching and nutrition.' },
+  'reverse-swing':{ category: 'Sports / Content',        caption: 'Long form cricket writing with a purpose built CMS behind it.' },
+};
 ---
 
-<BaseLayout 
-  title="Omar Zaghloul — Product & Project Manager, Software Developer, AI & Automation expert & RuneX Founder"
-  description="Project manager and product builder specializing in technical solutions, and AI tools."
-  ogImage="/avatar/hero-avatar.png"
+<BaseLayout
+  title="Omar Zaghloul — Technical Product Engineer"
+  description="Custom systems, platforms and automations built to turn operational friction into leverage."
+  ogImage="/avatar/oz-hero.png"
 >
+
+  <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
   <section class="relative flex min-h-[100dvh] w-full items-center justify-center overflow-hidden bg-bg px-6 lg:px-16 border-b border-border/50">
-    <!-- Noise Overlay -->
-    <div class="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-[0.03]">
+    <!-- Noise overlay -->
+    <div class="pointer-events-none absolute inset-0 z-0 h-full w-full opacity-[0.025]">
       <svg class="h-full w-full">
         <filter id="noise">
           <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch" />
@@ -24,177 +35,299 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
       </svg>
     </div>
 
-    <!-- Main Hero Container -->
+    <!-- Main hero container -->
     <div class="relative z-10 flex w-full max-w-7xl flex-col-reverse items-center justify-between pt-24 pb-12 lg:flex-row lg:py-0">
-      
-      <!-- Text Content (Left) -->
-      <div class="relative z-20 mt-12 flex flex-col items-center text-center lg:mt-0 lg:w-1/2 lg:items-start lg:text-left">
-        <h1 id="hero-name" class="font-display text-[clamp(2.5rem,10vw,6rem)] font-bold leading-none tracking-tight text-text opacity-0" data-i18n="hero.name">
-          Omar <span class="relative inline-block whitespace-nowrap">Zaghloul<span class="absolute bottom-2 left-0 -z-10 h-[0.14em] w-full bg-accent/80"></span></span>
-        </h1>
-        <h2 id="hero-position" class="mt-4 font-display text-2xl font-light tracking-wide text-text/90 opacity-0 md:text-3xl" data-i18n="hero.position">
-          Product Engineer & AI Automation Specialist
-        </h2>
-        <p id="hero-desc" class="mt-6 max-w-md font-body text-lg text-text-muted opacity-0" data-i18n="hero.desc">
-          Full-Stack Developer & Technical Founder at RuneX
+
+      <!-- Text content (left) -->
+      <div class="relative z-20 mt-10 flex flex-col items-center text-center lg:mt-0 lg:w-1/2 lg:items-start lg:text-left">
+        <p
+          id="hero-eyebrow"
+          class="mb-4 font-body text-sm font-medium tracking-[0.2em] uppercase text-accent opacity-0"
+          data-i18n="hero.eyebrow"
+        >
+          Technical Product Engineer
         </p>
+
+        <h1
+          id="hero-name"
+          class="font-display text-[clamp(3rem,10vw,6.5rem)] font-bold leading-none tracking-tight text-text opacity-0"
+          data-i18n="hero.name"
+        >
+          Omar Zaghloul
+        </h1>
+
+        <p
+          id="hero-subhead"
+          class="mt-6 max-w-md font-body text-[1.0625rem] leading-[1.7] text-text-muted opacity-0"
+          data-i18n="hero.subhead"
+        >
+          Custom systems, platforms and automations built to turn operational friction into leverage.
+        </p>
+
+        <!-- CTAs -->
+        <div id="hero-ctas" class="mt-10 flex flex-wrap items-center gap-4 opacity-0">
+          <a
+            href="https://cal.com/omar-ztech/discovery"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-body text-sm font-medium text-bg transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_20px_rgba(168,221,7,0.35)]"
+            data-i18n="hero.cta.primary"
+          >
+            Book a free discovery call
+          </a>
+          <a
+            href="#work"
+            class="inline-flex items-center gap-2 font-body text-sm font-medium text-text-muted transition-colors hover:text-text"
+            data-i18n="hero.cta.secondary"
+          >
+            See the work <span class="dir-arrow">→</span>
+          </a>
+        </div>
       </div>
 
-      <!-- Avatar & Glow (Right globally, Top on Mobile) -->
+      <!-- Avatar (right / top on mobile) -->
       <div class="relative z-10 flex items-center justify-center lg:w-1/2">
-        <!-- Radial Glow -->
-        <div class="absolute top-1/2 left-1/2 h-[350px] w-[350px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent opacity-[0.08] blur-[100px] md:h-[500px] md:w-[500px]"></div>
-        
-        <!-- Avatar Wrapper -->
-        <div id="hero-avatar" class="relative opacity-0">
-          <img 
-            src="/avatar/hero-avatar.png" 
-            alt="Omar Zaghloul" 
-            class="relative z-10 h-auto w-full max-w-[390px] object-cover drop-shadow-2xl md:max-w-[593px] lg:-ml-12 lg:max-w-[936px]"
-            width="450"
-            height="450"
+        <!-- Radial glow -->
+        <div class="absolute top-1/2 left-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent opacity-[0.07] blur-[100px] md:h-[450px] md:w-[450px]"></div>
+
+        <div id="hero-avatar" class="relative opacity-0 not-rtl-mirror">
+          <img
+            src="/avatar/oz-hero.png"
+            alt="Omar Zaghloul"
+            class="relative z-10 h-auto w-full max-w-[320px] object-contain drop-shadow-2xl md:max-w-[480px] lg:max-w-[560px]"
+            width="560"
+            height="560"
+            onerror="this.style.display='none'; this.parentElement.style.minHeight='400px';"
           />
         </div>
       </div>
     </div>
 
-    <!-- Scroll Indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center opacity-60">
-      <div class="h-12 w-[2px] overflow-hidden rounded-full bg-border/80">
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center justify-center opacity-50">
+      <div class="h-12 w-[2px] overflow-hidden rounded-full bg-border">
         <div class="animate-scroll-down h-1/2 w-full bg-accent"></div>
       </div>
     </div>
   </section>
 
-  <!-- Project Showcase Section (Pinned Horizontal Scroll) -->
-  <section class="relative w-full bg-bg py-24" id="work">
-    <!-- Progress Indicator Container -->
-    <div class="fixed top-0 left-0 z-50 h-1 w-full bg-border/30 opacity-0 transition-opacity duration-300" id="work-progress-container">
-      <div class="h-full w-0 bg-accent" id="work-progress-bar"></div>
+  <!-- ═══════════════════════════ WORK ═══════════════════════════ -->
+  <section class="relative w-full bg-bg px-6 py-24 lg:px-16" id="work">
+    <!-- Section header -->
+    <div class="mx-auto w-full max-w-7xl mb-16">
+      <p class="work-fade mb-3 font-body text-xs font-medium tracking-[0.2em] uppercase text-accent opacity-0" data-i18n="work.eyebrow">In production</p>
+      <h2 class="work-fade font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0" data-i18n="work.header">
+        Selected work
+      </h2>
     </div>
 
-    <!-- Pinned Container -->
-    <div class="relative w-full overflow-hidden" id="work-pin-container">
-      <div class="px-6 lg:px-16 mb-12 flex items-end justify-between" id="work-header-container">
-        <!-- Section Header -->
-        <h2 id="work-header" class="font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0" data-i18n="work.header">
-          Selected Work
+    <!-- Project flip-card grid -->
+    <div class="mx-auto w-full max-w-7xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {sortedProjects.map((project, i) => {
+        const meta = projectMeta[project.slug] || { category: project.data.category, caption: project.data.subtitle };
+        return (
+          <div
+            class="flip-card work-card aspect-[4/3] w-full opacity-0"
+            style={`--delay: ${i * 0.08}s`}
+          >
+            <div class="flip-card-inner rounded-xl overflow-hidden border border-border">
+              <!-- Front face -->
+              <div class="flip-card-front relative w-full h-full rounded-xl overflow-hidden bg-surface">
+                <Image
+                  src={project.data.thumbnail}
+                  alt={project.data.title}
+                  format="webp"
+                  quality={80}
+                  class="absolute inset-0 h-full w-full object-cover"
+                />
+                <!-- Always-visible overlay bar at bottom -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-bg via-bg/80 to-transparent px-5 pt-12 pb-5">
+                  <p class="text-xs font-medium tracking-[0.15em] uppercase text-accent mb-1" data-i18n={`projects.${project.slug}.category`}>
+                    {meta.category}
+                  </p>
+                  <h3 class="font-display text-xl font-bold text-text">{project.data.title}</h3>
+                </div>
+              </div>
+
+              <!-- Back face -->
+              <div class="flip-card-back flex flex-col justify-center bg-surface px-7 py-8">
+                <p class="text-xs font-medium tracking-[0.15em] uppercase text-accent mb-3" data-i18n={`projects.${project.slug}.category`}>
+                  {meta.category}
+                </p>
+                <h3 class="font-display text-2xl font-bold text-text mb-4">{project.data.title}</h3>
+                <p class="font-body text-sm leading-[1.7] text-text-muted" data-i18n={`projects.${project.slug}.caption`}>
+                  {meta.caption}
+                </p>
+                <a
+                  href={`/projects/${project.slug}`}
+                  class="mt-6 inline-flex items-center gap-2 font-body text-sm font-medium text-accent hover:text-text transition-colors"
+                  aria-label={`View ${project.data.title} case study`}
+                >
+                  View case study <span class="dir-arrow">→</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════ SERVICES ═══════════════════════════ -->
+  <section class="relative w-full bg-surface/40 px-6 py-24 lg:px-16 border-t border-b border-border/50" id="services">
+    <div class="mx-auto w-full max-w-7xl">
+      <!-- Header -->
+      <div class="mb-16">
+        <p class="services-fade mb-3 font-body text-xs font-medium tracking-[0.2em] uppercase text-accent opacity-0" data-i18n="services.eyebrow">Where I help</p>
+        <h2 class="services-fade font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0" data-i18n="services.header">
+          Services
         </h2>
-        
-        <!-- Navigation Arrows -->
-        <div class="flex gap-4 opacity-0" id="work-nav-arrows">
-          <button id="scroll-left" aria-label="Scroll left" class="group flex h-12 w-12 items-center justify-center rounded-full border border-border/50 bg-surface transition-all hover:border-accent/50 hover:bg-surface/80">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-muted transition-colors group-hover:text-accent"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-          </button>
-          <button id="scroll-right" aria-label="Scroll right" class="group flex h-12 w-12 items-center justify-center rounded-full border border-border/50 bg-surface transition-all hover:border-accent/50 hover:bg-surface/80">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-text-muted transition-colors group-hover:text-accent"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-          </button>
-        </div>
       </div>
 
-      <!-- Project Cards Horizontal Wrapper -->
-      <div class="flex w-full overflow-x-auto overflow-y-hidden snap-x snap-mandatory gap-8 px-6 pb-12 md:gap-12 lg:px-16 scroll-smooth" id="work-horizontal-wrapper" style="scrollbar-width: none; -ms-overflow-style: none; -webkit-overflow-scrolling: touch;">
-        <style>
-          #work-horizontal-wrapper::-webkit-scrollbar { display: none; }
-        </style>
-        {sortedProjects.map((project, i) => (
-          <a 
-            href={`/projects/${project.slug}`} 
-            class="project-card snap-center group relative flex w-[85vw] flex-shrink-0 flex-col overflow-hidden rounded-xl border border-border bg-surface p-6 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-accent/40 hover:shadow-[0_0_30px_-5px_rgba(200,240,77,0.15)] md:w-[45vw] lg:w-[40vw] max-w-[800px]"
+      <!-- Cards grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          { num: '01', titleKey: 'services.01.title', descKey: 'services.01.desc', titleDefault: 'Custom Web Platforms', descDefault: 'Built around how your team actually works, so people stop working around the software.' },
+          { num: '02', titleKey: 'services.02.title', descKey: 'services.02.desc', titleDefault: 'AI & Workflow Automation', descDefault: 'The manual steps between your tools disappear, and stay gone.' },
+          { num: '03', titleKey: 'services.03.title', descKey: 'services.03.desc', titleDefault: 'E-Commerce Solutions', descDefault: 'Storefronts, landing pages and portfolio sites launched fast, on a foundation that does not need rebuilding once it works.' },
+          { num: '04', titleKey: 'services.04.title', descKey: 'services.04.desc', titleDefault: 'Business Operating Systems', descDefault: 'SaaS, CRM and ERP platforms that put your data in one place instead of five.', subtitleKey: 'services.04.subtitle', subtitleDefault: 'SaaS, CRM & ERP platforms' },
+        ].map((service, i) => (
+          <div
+            class="service-card group rounded-2xl border border-border/60 bg-bg p-8 md:p-10 opacity-0 transition-all duration-300 hover:border-border hover:bg-surface/60"
+            style={`--delay: ${i * 0.1}s`}
           >
-            <!-- Thumbnail Image -->
-            <div class="relative mb-6 aspect-[16/10] w-full overflow-hidden rounded-lg bg-bg">
-              <Image 
-                src={project.data.thumbnail} 
-                alt={project.data.title} 
-                format="webp"
-                quality={80}
-                class="h-full w-full object-cover transition-transform duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.03]"
-                transition:name={project.slug}
-              />
-            </div>
-            
-            <!-- Card Details -->
-            <div class="flex flex-col flex-grow">
-              <span class="mb-3 text-xs font-semibold tracking-wider text-text-muted uppercase" data-i18n={`projects.${project.slug}.category`}>
-                {project.data.category}
-              </span>
-              <h3 class="font-display text-2xl font-bold text-text md:text-3xl">
-                {project.data.title}
-              </h3>
-              <p class="mt-2 font-body text-base text-text-muted/80" data-i18n={`projects.${project.slug}.subtitle`}>
-                {project.data.subtitle}
+            <p class="font-display text-[4rem] font-bold leading-none text-accent/20 mb-6 group-hover:text-accent/30 transition-colors duration-300">
+              {service.num}
+            </p>
+            <h3 class="font-display text-xl font-bold text-text mb-2" data-i18n={service.titleKey}>
+              {service.titleDefault}
+            </h3>
+            {service.subtitleKey && (
+              <p class="font-body text-xs text-text-muted mb-3 tracking-wide" data-i18n={service.subtitleKey}>
+                {service.subtitleDefault}
               </p>
-            </div>
-          </a>
+            )}
+            <p class="font-body text-[0.9375rem] leading-[1.7] text-text-muted" data-i18n={service.descKey}>
+              {service.descDefault}
+            </p>
+          </div>
         ))}
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- ═══════════════════════════ ABOUT ═══════════════════════════ -->
   <section class="relative w-full bg-bg px-6 py-32 lg:px-16" id="about">
-    <div class="mx-auto w-full max-w-[900px]">
-      <h2 id="about-header" class="mb-2 font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0" data-i18n="about.header">
-        About
+    <div class="mx-auto w-full max-w-[800px]">
+      <h2
+        id="about-header"
+        class="mb-16 font-display text-[clamp(1.75rem,4vw,3rem)] font-bold leading-tight tracking-tight text-text opacity-0"
+        data-i18n="about.header"
+      >
+        The bottleneck is never demand. It is the system underneath it.
       </h2>
-      <h3 id="about-subheader" class="mb-12 font-display text-[clamp(1.5rem,3vw,2.5rem)] text-accent opacity-0" data-i18n="about.subheader">
-        Building systems that grow with your business — not against it.
-      </h3>
 
-      <div class="flex flex-col">
-        <!-- Bio Paragraphs -->
-        <div class="flex flex-col gap-6 mb-16">
-          <p class="about-text font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0" data-i18n="about.p1">
-            Most businesses hit a ceiling not because demand slows down, but because their internal systems can't keep up. Operations scattered across WhatsApp threads, spreadsheets, and disconnected tools. Data that lives in five places but is accurate in none of them. Teams spending hours on work that should take minutes. I build the platforms that permanently replace that friction.
-          </p>
-          <p class="about-text font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0" data-i18n="about.p2">
-            I partner with businesses to turn operational bottlenecks into scalable, automated infrastructure. My work spans four areas:
-          </p>
-        </div>
-
-        <!-- Capability Blocks Vertical List -->
-        <div class="flex flex-col gap-8 mb-12">
-          <!-- Block 1 -->
-          <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
-            <h4 class="mb-2 font-display text-xl font-bold text-text" data-i18n="about.block1.title">Custom Web & Business Platforms</h4>
-            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted" data-i18n="about.block1.desc">
-              Centralized dashboards and portals where your team manages operations and your clients track their own progress in real time. From oncology clinics coordinating treatment cycles to education agencies managing hundreds of student applications across universities — each platform is built around how your business actually runs, not how a generic tool thinks it should.
-            </p>
-          </div>
-          
-          <!-- Block 2 -->
-          <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
-            <h4 class="mb-2 font-display text-xl font-bold text-text" data-i18n="about.block2.title">Mobile Applications</h4>
-            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted" data-i18n="about.block2.desc">
-              Cross-platform apps that put your service directly in your users' hands. From AI-powered fitness companions with integrated chatbot coaching to consumer-facing booking experiences, I build for both iOS and Android from a single codebase without compromising on feel.
-            </p>
-          </div>
-          
-          <!-- Block 3 -->
-          <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
-            <h4 class="mb-2 font-display text-xl font-bold text-text" data-i18n="about.block3.title">AI & Workflow Automation</h4>
-            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted" data-i18n="about.block3.desc">
-              If a process is repetitive, it should be automated. I design intelligent workflows that connect your existing tools, eliminate manual data transfer, and surface insights your team would otherwise spend hours compiling. Auto-generated treatment schedules, smart document routing, pipeline triggers that fire without human intervention — the goal is always to remove the busywork so your team focuses on growth.
-            </p>
-          </div>
-
-          <!-- Block 4 -->
-          <div class="about-block flex flex-col border-l-2 border-accent pl-6 opacity-0">
-            <h4 class="mb-2 font-display text-xl font-bold text-text" data-i18n="about.block4.title">Rapid Deployment & E-Commerce</h4>
-            <p class="font-body text-[1.125rem] leading-[1.75] text-text-muted" data-i18n="about.block4.desc">
-              Not every project needs a six-month build cycle. For businesses that need to move fast — launching a booking platform, standing up a content-driven site, deploying an e-commerce storefront — I match the right technology to the timeline, getting you to market quickly with architecture that won't need to be thrown away when you scale.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Closing Paragraph -->
-        <p class="about-closing mt-8 font-body text-[1.125rem] leading-[1.75] text-text/90 opacity-0" data-i18n="about.closing">
-          Technology only matters if it drives your business forward. I bring a background in computer engineering and product management to every engagement — which means you're not just getting a developer who writes code to spec. You're getting an architect who understands the business objective and builds the exact technical foundation to execute it. One point of contact. No handoffs. No rotating juniors.
+      <div class="flex flex-col gap-8">
+        <p
+          class="about-para font-body text-[1.125rem] leading-[1.8] text-text/85 opacity-0"
+          data-i18n="about.p1"
+        >
+          Every business I have worked with reached the same moment: growth outpaced the systems holding it together. A schedule kept on paper. Applications tracked across a hundred chat threads. Data nobody fully trusted. None of that needed another tool stacked on top, it needed one system designed around how the business actually runs.
         </p>
+        <p
+          class="about-para font-body text-[1.125rem] leading-[1.8] text-text/85 opacity-0"
+          data-i18n="about.p2"
+        >
+          A good system is leverage you only have to build once and it keeps paying you back. That is the work: computer engineering and product thinking applied to real operational pain, one person accountable from the first call to the last deploy. No handoffs, no account managers, no one relearning your business from scratch.
+        </p>
+      </div>
+    </div>
+  </section>
 
-        <!-- Subtle Line Divider -->
-        <div class="w-full h-px bg-border/40 mt-16 mb-16"></div>
+  <!-- ═══════════════════════════ FAQ ═══════════════════════════ -->
+  <section class="relative w-full bg-surface/30 px-6 py-24 lg:px-16 border-t border-border/50" id="faq">
+    <div class="mx-auto w-full max-w-[720px]">
+      <!-- Header -->
+      <div class="mb-14">
+        <p class="faq-fade mb-3 font-body text-xs font-medium tracking-[0.2em] uppercase text-accent opacity-0" data-i18n="faq.eyebrow">Before you ask</p>
+        <h2 class="faq-fade font-display text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight text-text opacity-0" data-i18n="faq.header">
+          FAQ
+        </h2>
+      </div>
+
+      <!-- Accordion -->
+      <div class="flex flex-col divide-y divide-border/60" id="faq-accordion">
+        {[
+          {
+            q: 'What services do you offer?',
+            a: 'Custom web platforms, AI and workflow automation, e-commerce, and SaaS, CRM and ERP systems, whatever the business actually needs to run better.',
+            qKey: 'faq.q1', aKey: 'faq.a1',
+          },
+          {
+            q: 'How long does a typical project take?',
+            a: 'Depends on scope, always. A focused platform can ship in weeks, a full operating system takes longer. Timelines get locked in before work starts, never guessed at along the way.',
+            qKey: 'faq.q2', aKey: 'faq.a2',
+          },
+          {
+            q: 'How do I get a price estimate?',
+            a: 'Every project is scoped on its own terms, never off a template. A free discovery call gets you a clear number, fast.',
+            qKey: 'faq.q3', aKey: 'faq.a3',
+            hasLink: true,
+          },
+          {
+            q: 'What is your payment process?',
+            a: 'Half upfront to begin, half on delivery. Simple, and it keeps both sides accountable to the timeline.',
+            qKey: 'faq.q4', aKey: 'faq.a4',
+          },
+          {
+            q: 'Do you offer support after launch?',
+            a: 'Two weeks of support are included with every launch, free. After that, ongoing support runs monthly, priced to the project, not a flat rate.',
+            qKey: 'faq.q5', aKey: 'faq.a5',
+          },
+        ].map((item, i) => (
+          <div class="faq-item faq-fade opacity-0" data-index={i}>
+            <button
+              class="faq-trigger w-full flex items-center justify-between gap-6 py-6 text-left"
+              aria-expanded={i === 0 ? 'true' : 'false'}
+              id={`faq-btn-${i}`}
+              aria-controls={`faq-panel-${i}`}
+            >
+              <span class="font-display text-[1.0625rem] font-bold text-text" data-i18n={item.qKey}>
+                {item.q}
+              </span>
+              <span class="faq-icon flex-shrink-0 w-5 h-5 rounded-full border border-border/60 flex items-center justify-center text-text-muted text-sm">
+                +
+              </span>
+            </button>
+
+            <div
+              class="faq-answer"
+              id={`faq-panel-${i}`}
+              role="region"
+              aria-labelledby={`faq-btn-${i}`}
+            >
+              <div class="pb-6">
+                {item.hasLink ? (
+                  <p class="font-body text-[0.9375rem] leading-[1.75] text-text-muted" data-i18n={item.aKey}>
+                    {item.a}{' '}
+                    <a
+                      href="https://cal.com/omar-ztech/discovery"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="text-accent hover:underline"
+                    >
+                      Book one here.
+                    </a>
+                  </p>
+                ) : (
+                  <p class="font-body text-[0.9375rem] leading-[1.75] text-text-muted" data-i18n={item.aKey}>
+                    {item.a}
+                  </p>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -209,124 +342,116 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
     gsap.registerPlugin(ScrollTrigger);
 
     const initAnimations = () => {
-      // ── Reduced Motion: show everything immediately ────────────
+      // Reduced motion — show everything immediately
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         gsap.set(
-          '#hero-name, #hero-position, #hero-desc, #hero-avatar, #work-header, #work-nav-arrows, .project-card, #about-header, #about-subheader, .about-text, .about-block, .about-closing',
-          { opacity: 1, y: 0, x: 0, scale: 1, clipPath: 'none' }
+          '#hero-eyebrow, #hero-name, #hero-subhead, #hero-ctas, #hero-avatar, .work-fade, .work-card, .services-fade, .service-card, #about-header, .about-para, .faq-fade, .faq-item',
+          { opacity: 1, y: 0, x: 0 }
         );
+        // Open first FAQ
+        const firstAnswer = document.querySelector('.faq-answer') as HTMLElement;
+        if (firstAnswer) firstAnswer.style.height = 'auto';
         return;
       }
 
-      gsap.killTweensOf('#hero-name, #hero-position, #hero-desc, #hero-avatar, #work-header, .project-card, #about-header, .about-text');
+      gsap.killTweensOf('#hero-eyebrow, #hero-name, #hero-subhead, #hero-ctas, #hero-avatar');
 
-      // ── Hero: character-by-character stagger ──────────────────
+      // ── Hero: character-by-character stagger on name ──────────
       const heroName = document.getElementById('hero-name');
       if (heroName) {
-        heroName.style.perspective = '400px';
         heroName.style.opacity = '1';
-
-        const omarChars = Array.from('Omar\u00A0').map(c =>
-          `<span class="hero-char" style="display:inline-block;opacity:0">${c}</span>`
+        const fullName = 'Omar Zaghloul';
+        const chars = Array.from(fullName).map(c =>
+          `<span class="hero-char" style="display:inline-block;opacity:0">${c === ' ' ? '&nbsp;' : c}</span>`
         ).join('');
-        const zaghloulChars = Array.from('Zaghloul').map(c =>
-          `<span class="hero-char" style="display:inline-block;opacity:0">${c}</span>`
-        ).join('');
+        heroName.innerHTML = chars;
 
-        heroName.innerHTML = `${omarChars}<span class="relative inline-block whitespace-nowrap">${zaghloulChars}<span class="absolute bottom-2 left-0 -z-10 h-[0.14em] w-full bg-accent/80"></span></span>`;
+        const charEls = heroName.querySelectorAll('.hero-char');
+        const staggerEnd = (charEls.length - 1) * 0.035;
 
-        const chars = heroName.querySelectorAll('.hero-char');
-        // 13 chars total (5 "Omar " + 8 "Zaghloul")
-        const nameStaggerEnd = (chars.length - 1) * 0.035;
-
-        gsap.fromTo(chars,
+        gsap.fromTo(charEls,
           { opacity: 0, y: 40, rotateX: -40, transformPerspective: 400 },
           { opacity: 1, y: 0, rotateX: 0, duration: 0.6, stagger: 0.035, ease: 'back.out(1.7)' }
         );
 
-        gsap.fromTo('#hero-position',
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: nameStaggerEnd + 0.2 }
+        gsap.fromTo('#hero-eyebrow',
+          { y: 15, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.1 }
         );
-        gsap.fromTo('#hero-desc',
+        gsap.fromTo('#hero-subhead',
           { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: nameStaggerEnd + 0.35 }
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: staggerEnd + 0.2 }
+        );
+        gsap.fromTo('#hero-ctas',
+          { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: staggerEnd + 0.35 }
         );
       }
 
-      // Avatar (simultaneous with name)
+      // Avatar
       gsap.fromTo('#hero-avatar',
-        { scale: 0.95, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 1.0, ease: 'power3.out' }
+        { scale: 0.96, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 1.1, ease: 'power3.out' }
       );
 
-      // ── Work Header: clip-path line wipe ──────────────────────
-      gsap.fromTo('#work-header',
-        { clipPath: 'inset(0 100% 0 0)', opacity: 1 },
-        {
-          clipPath: 'inset(0 0% 0 0)',
-          duration: 0.8,
-          ease: 'power3.inOut',
-          scrollTrigger: { trigger: '#work', start: 'top 80%' }
-        }
-      );
-
-      gsap.fromTo('#work-nav-arrows',
+      // ── Work section ──────────────────────────────────────────
+      gsap.fromTo('.work-fade',
         { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '#work', start: 'top 85%' } }
+        { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+          scrollTrigger: { trigger: '#work', start: 'top 80%' } }
       );
 
-      // Arrow button scroll logic
-      const slider = document.querySelector('#work-horizontal-wrapper') as HTMLElement;
-      const leftBtn = document.querySelector('#scroll-left');
-      const rightBtn = document.querySelector('#scroll-right');
-
-      if (slider && leftBtn && rightBtn) {
-        const scrollDistance = window.innerWidth * 0.85;
-        leftBtn.addEventListener('click', () => slider.scrollBy({ left: -scrollDistance, behavior: 'smooth' }));
-        rightBtn.addEventListener('click', () => slider.scrollBy({ left: scrollDistance, behavior: 'smooth' }));
-
-        let isDown = false;
-        let startX: number;
-        let scrollLeft: number;
-        slider.addEventListener('mousedown', (e) => { isDown = true; slider.classList.add('cursor-grabbing'); startX = e.pageX - slider.offsetLeft; scrollLeft = slider.scrollLeft; });
-        slider.addEventListener('mouseleave', () => { isDown = false; slider.classList.remove('cursor-grabbing'); });
-        slider.addEventListener('mouseup', () => { isDown = false; slider.classList.remove('cursor-grabbing'); });
-        slider.addEventListener('mousemove', (e) => { if (!isDown) return; slider.scrollLeft = scrollLeft - (e.pageX - slider.offsetLeft - startX) * 2; });
-      }
-
-      // Project cards: fade up
-      (gsap.utils.toArray('.project-card') as Element[]).forEach((card) => {
-        gsap.fromTo(card, { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: card, start: 'top 85%' } });
+      (gsap.utils.toArray('.work-card') as Element[]).forEach((card, i) => {
+        gsap.fromTo(card,
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: i * 0.08,
+            scrollTrigger: { trigger: card, start: 'top 88%' } }
+        );
       });
 
-      // ── About: headers ─────────────────────────────────────────
-      gsap.fromTo('#about-header', { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '#about-header', start: 'top 85%' } });
-      gsap.fromTo('#about-subheader', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '#about-subheader', start: 'top 85%' } });
+      // ── Services section ──────────────────────────────────────
+      gsap.fromTo('.services-fade',
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, stagger: 0.1, ease: 'power3.out',
+          scrollTrigger: { trigger: '#services', start: 'top 80%' } }
+      );
 
-      // ── About First Paragraph: word-by-word scrub reveal ──────
-      const aboutParagraphs = document.querySelectorAll('.about-text');
-      const firstAbout = aboutParagraphs[0] as HTMLElement | undefined;
+      (gsap.utils.toArray('.service-card') as Element[]).forEach((card, i) => {
+        gsap.fromTo(card,
+          { y: 40, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: i * 0.1,
+            scrollTrigger: { trigger: card, start: 'top 88%' } }
+        );
+      });
 
-      if (firstAbout) {
+      // ── About: word-by-word scroll reveal on first paragraph ─
+      gsap.fromTo('#about-header',
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+          scrollTrigger: { trigger: '#about-header', start: 'top 85%' } }
+      );
+
+      const aboutParas = document.querySelectorAll('.about-para');
+      const firstPara = aboutParas[0] as HTMLElement | undefined;
+
+      if (firstPara) {
         if (window.matchMedia('(pointer: coarse)').matches) {
-          // Mobile: simple fade up
-          gsap.fromTo(firstAbout, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: firstAbout, start: 'top 85%' } });
+          gsap.fromTo(firstPara, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+            scrollTrigger: { trigger: firstPara, start: 'top 85%' } });
         } else {
-          // Desktop: word-by-word tied to scroll position
-          const words = (firstAbout.textContent?.trim() || '').split(/\s+/);
-          firstAbout.style.opacity = '1';
-          firstAbout.innerHTML = words.map(w =>
-            `<span class="about-word" style="display:inline;opacity:0.12;color:#6B7280">${w}</span>`
+          const words = (firstPara.textContent?.trim() || '').split(/\s+/);
+          firstPara.style.opacity = '1';
+          firstPara.innerHTML = words.map(w =>
+            `<span class="about-word" style="display:inline;opacity:0.12;color:var(--color-text-muted)">${w}</span>`
           ).join(' ');
 
           gsap.to('.about-word', {
             opacity: 1,
-            color: '#E0E0E0',
+            color: 'var(--color-text)',
             stagger: { each: 0.03 },
             ease: 'none',
             scrollTrigger: {
-              trigger: firstAbout,
+              trigger: firstPara,
               start: 'top 80%',
               end: 'center center',
               scrub: true,
@@ -335,38 +460,74 @@ const sortedProjects = projects.sort((a, b) => a.data.order - b.data.order);
         }
       }
 
-      // Second about-text: normal fade up
-      if (aboutParagraphs[1]) {
-        gsap.fromTo(aboutParagraphs[1], { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: aboutParagraphs[1], start: 'top 85%' } });
+      if (aboutParas[1]) {
+        gsap.fromTo(aboutParas[1], { y: 20, opacity: 0 },
+          { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
+            scrollTrigger: { trigger: aboutParas[1], start: 'top 85%' } }
+        );
       }
 
-      // Capability blocks
-      gsap.fromTo('.about-block',
-        { x: -20, opacity: 0 },
-        { x: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out', scrollTrigger: { trigger: '.about-block', start: 'top 85%' } }
+      // ── FAQ fade ─────────────────────────────────────────────
+      gsap.fromTo('.faq-fade',
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.08, ease: 'power3.out',
+          scrollTrigger: { trigger: '#faq', start: 'top 80%' } }
       );
-
-      // Closing paragraph
-      gsap.fromTo('.about-closing', { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: '.about-closing', start: 'top 85%' } });
     };
 
-    document.addEventListener('astro:page-load', initAnimations);
+    // ── FAQ accordion ─────────────────────────────────────────────
+    const initFAQ = () => {
+      const items = document.querySelectorAll('.faq-item');
+
+      const openItem = (item: Element) => {
+        const answer = item.querySelector('.faq-answer') as HTMLElement;
+        const inner = answer.firstElementChild as HTMLElement;
+        const btn = item.querySelector('.faq-trigger') as HTMLButtonElement;
+        if (!answer || !inner) return;
+
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+        answer.style.height = inner.offsetHeight + 'px';
+      };
+
+      const closeItem = (item: Element) => {
+        const answer = item.querySelector('.faq-answer') as HTMLElement;
+        const btn = item.querySelector('.faq-trigger') as HTMLButtonElement;
+        if (!answer) return;
+
+        item.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        answer.style.height = '0';
+      };
+
+      items.forEach((item, i) => {
+        const btn = item.querySelector('.faq-trigger') as HTMLButtonElement;
+        if (!btn) return;
+
+        // Open first by default
+        if (i === 0) openItem(item);
+
+        btn.addEventListener('click', () => {
+          const isOpen = item.classList.contains('open');
+          items.forEach(closeItem);
+          if (!isOpen) openItem(item);
+        });
+      });
+    };
+
+    document.addEventListener('astro:page-load', () => {
+      initAnimations();
+      initFAQ();
+    });
   </script>
 
   <style>
-    @keyframes scroll-down {
-      0% {
-        transform: translateY(-100%);
-      }
-      50% {
-        transform: translateY(100%);
-      }
-      100% {
-        transform: translateY(100%);
-      }
+    /* Avatar must NOT mirror in RTL */
+    [dir="rtl"] #hero-avatar {
+      transform: none !important;
     }
-    .animate-scroll-down {
-      animation: scroll-down 2s ease-in-out infinite;
+    [dir="rtl"] #hero-avatar img {
+      transform: none !important;
     }
   </style>
 </BaseLayout>

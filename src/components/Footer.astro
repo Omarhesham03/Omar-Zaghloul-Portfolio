@@ -1,34 +1,58 @@
 ---
 ---
-<footer class="border-t border-border/30 bg-bg px-6 py-32 lg:px-16" id="contact">
+<footer class="border-t border-border/30 bg-bg px-6 py-28 lg:px-16" id="contact">
   <div class="mx-auto flex w-full max-w-7xl flex-col items-center justify-center text-center">
-    
-    <div class="relative mb-6 flex flex-col items-center">
-      <h2 id="footer-header" class="relative font-display text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight text-text opacity-0">
-        <span data-i18n="contact.title">Let's Talk</span>
-        <span class="absolute bottom-1 left-0 -z-10 h-3 w-full bg-accent/40 blur-[2px]"></span>
+
+    <div class="relative mb-8 flex flex-col items-center">
+      <h2
+        id="footer-header"
+        class="relative font-display text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight text-text opacity-0"
+        data-i18n="contact.header"
+      >
+        Let's talk
       </h2>
     </div>
-    
-    <p id="footer-subtitle" class="mb-12 max-w-xl font-body text-xl text-text-muted opacity-0" data-i18n="contact.desc">
-      Have a project in mind? Let's build something together.
-    </p>
-    
-    <a id="footer-email" href="mailto:omarhesham87878@gmail.com" class="mb-16 font-display text-[clamp(1.25rem,6vw,3.5rem)] break-all font-semibold text-text transition-colors hover:text-accent opacity-0 p-2 -m-2 max-w-full">
-      omarhesham87878@gmail.com
+
+    <!-- Primary CTA -->
+    <a
+      id="footer-cta"
+      href="https://cal.com/omar-ztech/discovery"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mb-16 inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 font-body text-base font-medium text-bg opacity-0 transition-all duration-300 hover:brightness-110 hover:shadow-[0_0_30px_rgba(168,221,7,0.3)]"
+      data-i18n="contact.cta"
+    >
+      Book a free discovery call
     </a>
-    
-    <div id="footer-links" class="mb-16 flex gap-8 opacity-0">
-      <a href="https://www.linkedin.com/in/omar-zaghloul-061021241/" target="_blank" rel="noopener noreferrer" class="hover-link font-body text-lg text-text-muted hover:text-text transition-colors p-2 -m-2">
+
+    <!-- Social links -->
+    <div id="footer-links" class="mb-12 flex flex-wrap justify-center gap-8 opacity-0">
+      <a
+        href="https://www.linkedin.com/in/omar-zaghloul-061021241/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover-link font-body text-base text-text-muted hover:text-text transition-colors"
+      >
         LinkedIn
       </a>
-      <a href="https://www.instagram.com/omar.ztech/" target="_blank" rel="noopener noreferrer" class="hover-link font-body text-lg text-text-muted hover:text-text transition-colors p-2 -m-2">
+      <a
+        href="https://www.instagram.com/omar.ztech/"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="hover-link font-body text-base text-text-muted hover:text-text transition-colors"
+      >
         Instagram
       </a>
+      <a
+        href="mailto:omarhesham87878@gmail.com"
+        class="hover-link font-body text-base text-text-muted hover:text-text transition-colors"
+      >
+        omarhesham87878@gmail.com
+      </a>
     </div>
-    
-    <p class="font-body text-sm text-text-muted/60" data-i18n="footer.copy">
-      © 2026 Omar Zaghloul / RuneX
+
+    <p class="font-body text-sm text-text-muted/50" data-i18n="footer.copy">
+      © 2026 Omar Zaghloul
     </p>
   </div>
 </footer>
@@ -40,8 +64,7 @@
   gsap.registerPlugin(ScrollTrigger);
 
   const initFooterAnimation = () => {
-    // Kill old tweens specifically targeted by footer
-    gsap.killTweensOf("#footer-header, #footer-subtitle, #footer-email, #footer-links");
+    gsap.killTweensOf("#footer-header, #footer-cta, #footer-links");
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -56,13 +79,7 @@
       { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }
     )
     .fromTo(
-      "#footer-subtitle",
-      { y: 20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
-      "-=0.4"
-    )
-    .fromTo(
-      "#footer-email",
+      "#footer-cta",
       { y: 20, opacity: 0 },
       { y: 0, opacity: 1, duration: 0.6, ease: "power3.out" },
       "-=0.4"

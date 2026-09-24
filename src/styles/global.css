@@ -1,10 +1,5 @@
-/* Clash Display — via FontShare CDN */
-@import url('https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&display=swap');
-
-/* Inter — via fontsource */
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
+/* ── Google Fonts: Syne + DM Mono + IBM Plex Arabic ── */
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@700&family=DM+Mono:wght@400;500&family=IBM+Plex+Arabic:wght@400;500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -12,13 +7,12 @@
 
 /* ── CSS custom properties ── */
 :root {
-  --color-bg:          #0A0A0F;
-  --color-text:        #E0E0E0;
-  --color-text-muted:  #6B7280;
-  --color-accent:      #C8F04D;
-  --color-accent-dim:  #A8CC30;
-  --color-surface:     #111118;
-  --color-border:      #1E1E2E;
+  --color-bg:          #111114;
+  --color-surface:     #1C1C21;
+  --color-accent:      #A8DD07;
+  --color-text:        #F0F0EE;
+  --color-text-muted:  #9a9a9f;
+  --color-border:      #26262c;
 }
 
 /* ── Base ── */
@@ -26,18 +20,33 @@
   html {
     background-color: var(--color-bg);
     color: var(--color-text);
-    font-family: 'Inter', sans-serif;
+    font-family: 'DM Mono', monospace;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
   }
 
+  /* Arabic locale — IBM Plex Arabic for both display and body */
+  html[lang="ar"] {
+    font-family: 'IBM Plex Arabic', 'DM Mono', monospace;
+  }
+
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Syne', sans-serif;
+  }
+
+  html[lang="ar"] h1,
+  html[lang="ar"] h2,
+  html[lang="ar"] h3,
+  html[lang="ar"] h4,
+  html[lang="ar"] h5,
+  html[lang="ar"] h6 {
+    font-family: 'IBM Plex Arabic', 'Syne', sans-serif;
   }
 }
-/* Custom Cursor Global Rules */
+
+/* ── Custom Cursor Global Rules ── */
 @media (pointer: fine) {
   body { cursor: none; }
   a, button, input, select, textarea, .project-card { cursor: none !important; }
@@ -61,11 +70,11 @@
 .custom-cursor.hovering {
   width: 40px;
   height: 40px;
-  background-color: rgba(200, 240, 77, 0.08);
+  background-color: rgba(168, 221, 7, 0.08);
   border-width: 1px;
 }
 
-/* Link Hover Custom Underline */
+/* ── Link Hover Custom Underline ── */
 .hover-link {
   position: relative;
   display: inline-block;
@@ -90,7 +99,17 @@
   transform-origin: bottom left;
 }
 
-/* Cursor Glow Spotlight (desktop / fine-pointer only) */
+/* ── RTL link underline fix ── */
+[dir="rtl"] .hover-link::after {
+  left: auto;
+  right: 0;
+  transform-origin: bottom left;
+}
+[dir="rtl"] .hover-link:hover::after {
+  transform-origin: bottom right;
+}
+
+/* ── Cursor Glow Spotlight (desktop / fine-pointer only) ── */
 @property --glow-alpha {
   syntax: '<number>';
   inherits: false;
@@ -106,7 +125,7 @@
   height: 300px;
   border-radius: 50%;
   --glow-alpha: 0.06;
-  background: radial-gradient(circle, rgba(200, 240, 77, var(--glow-alpha)) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(168, 221, 7, var(--glow-alpha)) 0%, transparent 70%);
   pointer-events: none;
   z-index: 9999;
   transform: translate(-50%, -50%);
@@ -119,4 +138,94 @@
   --glow-alpha: 0.10;
   width: 400px;
   height: 400px;
+}
+
+/* ── RTL layout mirroring ── */
+[dir="rtl"] .nav-link::after {
+  left: auto;
+  right: 0;
+  transform-origin: right;
+}
+[dir="rtl"] .nav-link:hover::after,
+[dir="rtl"] .nav-link.active::after {
+  transform-origin: left;
+}
+
+/* RTL: flip directional arrows (CTA arrows, back arrows) */
+[dir="rtl"] .dir-arrow {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+/* ── Flip Card ── */
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-style: preserve-3d;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+}
+
+[dir="rtl"] .flip-card:hover .flip-card-inner {
+  transform: rotateY(-180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+[dir="rtl"] .flip-card-back {
+  transform: rotateY(-180deg);
+}
+
+/* ── FAQ Accordion ── */
+.faq-answer {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-icon {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+/* ── Scroll-down animation ── */
+@keyframes scroll-down {
+  0%   { transform: translateY(-100%); }
+  50%  { transform: translateY(100%); }
+  100% { transform: translateY(100%); }
+}
+.animate-scroll-down {
+  animation: scroll-down 2s ease-in-out infinite;
+}
+
+/* ── Language Transition ── */
+:global(.lang-transition) {
+  transition: opacity 0.2s ease-in-out !important;
+}
+:global(.lang-swapping) {
+  opacity: 0 !important;
 }

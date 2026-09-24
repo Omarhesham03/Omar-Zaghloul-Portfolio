@@ -4,17 +4,17 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg: '#0A0A0F',
-        text: '#E0E0E0',
-        'text-muted': '#6B7280',
-        accent: '#C8F04D',
-        'accent-dim': '#A8CC30',
-        surface: '#111118',
-        border: '#1E1E2E',
+        bg:           '#111114',
+        surface:      '#1C1C21',
+        accent:       '#A8DD07',
+        text:         '#F0F0EE',
+        'text-muted': '#9a9a9f',
+        border:       '#26262c',
       },
       fontFamily: {
-        display: ['"Clash Display"', 'sans-serif'],
-        body: ['Inter', 'sans-serif'],
+        display: ['"Syne"', 'sans-serif'],
+        body:    ['"DM Mono"', 'monospace'],
+        arabic:  ['"IBM Plex Arabic"', '"Syne"', 'sans-serif'],
       },
     },
   },

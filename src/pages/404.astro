@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+import FloatingNav from '../components/FloatingNav.astro';
+---
+
+<BaseLayout
+  title="Page Not Found — Omar Zaghloul"
+  description="This page does not exist. Find your way back to Omar Zaghloul's portfolio."
+  ogImage="/avatar/oz-hero.png"
+>
+  <main class="flex min-h-[100dvh] w-full flex-col items-center justify-center bg-bg px-6 text-center">
+    <!-- Subtle accent accent line top decoration -->
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 h-px w-40 bg-gradient-to-r from-transparent via-accent/50 to-transparent"></div>
+
+    <div class="relative z-10 max-w-lg">
+      <!-- Accent numeral, small and quiet -->
+      <p class="font-display text-[6rem] font-bold leading-none text-accent/10 select-none mb-2" aria-hidden="true">
+        404
+      </p>
+
+      <h1
+        id="err-heading"
+        class="font-display text-[clamp(1.75rem,5vw,2.75rem)] font-bold tracking-tight text-text opacity-0"
+        data-i18n="404.heading"
+      >
+        This page does not exist.
+      </h1>
+
+      <p
+        id="err-body"
+        class="mt-4 font-body text-[1rem] leading-[1.75] text-text-muted opacity-0"
+        data-i18n="404.body"
+      >
+        The link may be broken, or the page may have been moved. Either way, nothing here.
+      </p>
+
+      <div id="err-ctas" class="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0">
+        <a
+          href="/"
+          class="inline-flex items-center gap-2 rounded-full border border-border/60 px-6 py-3 font-body text-sm font-medium text-text-muted transition-all hover:border-border hover:text-text"
+          data-i18n="404.cta.home"
+        >
+          <span class="dir-arrow" style="transform: scaleX(-1); display:inline-block;">→</span>
+          Back to the homepage
+        </a>
+        <a
+          href="https://cal.com/omar-ztech/discovery"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full bg-accent px-6 py-3 font-body text-sm font-medium text-bg transition-all hover:brightness-110 hover:shadow-[0_0_20px_rgba(168,221,7,0.3)]"
+          data-i18n="404.cta.call"
+        >
+          Book a discovery call
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+
+  <script>
+    import { gsap } from "gsap";
+
+    const init404 = () => {
+      gsap.fromTo('#err-heading',
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: 'power3.out', delay: 0.2 }
+      );
+      gsap.fromTo('#err-body',
+        { y: 15, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.4 }
+      );
+      gsap.fromTo('#err-ctas',
+        { y: 15, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.55 }
+      );
+    };
+
+    document.addEventListener('astro:page-load', init404);
+  </script>
+</BaseLayout>
