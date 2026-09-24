@@ -50,21 +50,21 @@ export const translations: Record<string, Record<string, string>> = {
     'project.techstack':          'Tech Stack',
 
     // Project detail bodies — OncoFlow
-    'projects.oncoflow.problem':            'Oncology pharmacists track chemotherapy cycles, lab results, drug interactions, and patient timelines — often across disconnected spreadsheets, paper forms, and hospital systems that don\'t talk to each other. A missed lab value or a scheduling conflict in a treatment cycle isn\'t just inefficiency — it\'s a patient safety risk. The existing workflow depends on manual cross-referencing and institutional memory rather than structured, accessible data.',
-    'projects.oncoflow.solution':           'OncoFlow is a web-based clinical dashboard purpose-built for oncology pharmacists. It centralizes patient management into three core modules:\n\nA Master Calendar that maps every patient\'s chemotherapy cycles, pre-medications, lab reviews, and follow-ups onto a single timeline — color-coded by event type, filterable by protocol. When a pharmacist assigns a treatment protocol to a patient, the system automatically generates the full cycle schedule, associated medications, expected symptoms, and treatment timeline — eliminating manual calendar entry and reducing scheduling errors.\n\nA Lab Values Tracker organized by clinical category (hematology, renal, hepatic, coagulation, electrolytes) with historical trending and flag-worthy thresholds, so pharmacists can assess treatment readiness at a glance rather than digging through paper records.\n\nA Patient Registry with search, protocol tagging (CHOP, FOLFOX, etc.), and admission tracking — giving pharmacists a structured, filterable view of their active caseload instead of a mental list.\n\nThe platform also generates printable patient reports and lab summaries — bridging the gap between the digital dashboard and the physical documentation that hospitals still require.',
-    'projects.oncoflow.technicalDecisions': 'The stack is Next.js with Supabase for auth, database, and row-level security — chosen for rapid prototyping speed without sacrificing a real permission model. The calendar uses a custom implementation rather than a third-party library, allowing treatment cycle logic (21-day CHOP cycles, dose-day mapping) to be encoded directly into the scheduling layer. Supabase\'s real-time subscriptions keep the dashboard current across concurrent sessions.',
+    'projects.oncoflow.problem':            'Oncology pharmacists track chemotherapy cycles, lab results, drug interactions, and patient timelines, often across disconnected spreadsheets, paper forms, and hospital systems that don\'t talk to each other. A missed lab value or a scheduling conflict in a treatment cycle isn\'t just inefficiency: it\'s a patient safety risk. The existing workflow depends on manual cross-referencing and institutional memory rather than structured, accessible data.',
+    'projects.oncoflow.solution':           'OncoFlow is a web-based clinical dashboard purpose-built for oncology pharmacists. It centralizes patient management into three core modules:\n\nA Master Calendar that maps every patient\'s chemotherapy cycles, pre-medications, lab reviews, and follow-ups onto a single timeline, color-coded by event type, filterable by protocol. When a pharmacist assigns a treatment protocol to a patient, the system automatically generates the full cycle schedule, associated medications, expected symptoms, and treatment timeline, eliminating manual calendar entry and reducing scheduling errors.\n\nA Lab Values Tracker organized by clinical category (hematology, renal, hepatic, coagulation, electrolytes) with historical trending and flag-worthy thresholds, so pharmacists can assess treatment readiness at a glance rather than digging through paper records.\n\nA Patient Registry with search, protocol tagging (CHOP, FOLFOX, etc.), and admission tracking, giving pharmacists a structured, filterable view of their active caseload instead of a mental list.\n\nThe platform also generates printable patient reports and lab summaries, bridging the gap between the digital dashboard and the physical documentation that hospitals still require.',
+    'projects.oncoflow.technicalDecisions': 'The stack is Next.js with Supabase for auth, database, and row-level security, chosen for rapid prototyping speed without sacrificing a real permission model. The calendar uses a custom implementation rather than a third-party library, allowing treatment cycle logic (21-day CHOP cycles, dose-day mapping) to be encoded directly into the scheduling layer. Supabase\'s real-time subscriptions keep the dashboard current across concurrent sessions.',
     'projects.oncoflow.whereItStands':      'Built in collaboration with a clinical pharmacy graduate as a working prototype. Currently being refined for proposal to oncology departments and private clinics as a lightweight alternative to full-scale hospital information systems.',
 
     // Project detail bodies — Altınkapı
     'projects.altinkapi.problem':            'Altınkapı is a travel company specializing in Hajj and Umrah pilgrimage tours, serving clients across multiple countries and languages. Their booking process was entirely manual — inquiries via phone and WhatsApp, package details shared as PDFs, and no way for customers to compare options, check availability, or self-serve. For a business handling high-value, time-sensitive religious travel, the lack of a digital storefront meant lost conversions and an overwhelming operational load on a small team.',
-    'projects.altinkapi.solution':           'A bilingual (English/Turkish) booking platform that lets customers browse curated Hajj and Umrah packages, filter by departure city, class of service, and date, and view transparent pricing with itemized inclusions (flights, visa, hotel tiers, guided tours).\n\nThe package display system breaks down each offering with hotel proximity ratings, night splits between Makkah and Medina, and service tiers — giving customers the information density they need to make a decision without a phone call.\n\nThe platform includes dark mode, a custom package request flow for non-standard itineraries, and an admin backend for the operator to manage package inventory, pricing, and seasonal promotions.',
-    'projects.altinkapi.technicalDecisions': 'Next.js with Firebase was chosen for its hosting simplicity and real-time database — the client needed to update package availability and pricing frequently without developer intervention. Internationalization was implemented at the routing level (not just string replacement) to support proper RTL-ready architecture for potential Arabic expansion. The UI uses a gold-and-black palette drawn from the client\'s existing brand identity.',
+    'projects.altinkapi.solution':           'A bilingual (English/Turkish) booking platform that lets customers browse curated Hajj and Umrah packages, filter by departure city, class of service, and date, and view transparent pricing with itemized inclusions (flights, visa, hotel tiers, guided tours).\n\nThe package display system breaks down each offering with hotel proximity ratings, night splits between Makkah and Medina, and service tiers, giving customers the information density they need to make a decision without a phone call.\n\nThe platform includes dark mode, a custom package request flow for non-standard itineraries, and an admin backend for the operator to manage package inventory, pricing, and seasonal promotions.',
+    'projects.altinkapi.technicalDecisions': 'Next.js with Firebase was chosen for its hosting simplicity and real-time database: the client needed to update package availability and pricing frequently without developer intervention. Internationalization was implemented at the routing level (not just string replacement) to support proper RTL-ready architecture for potential Arabic expansion. The UI uses a gold-and-black palette drawn from the client\'s existing brand identity.',
     'projects.altinkapi.whereItStands':      'Delivered and operational. The client\'s business operations are currently paused for reasons unrelated to the platform. The codebase and infrastructure remain deployment-ready.',
 
     // Project detail bodies — EduCounsellor
     'projects.educounsellor.problem':            'Educational counseling agencies — businesses that help students apply to universities abroad — typically manage their entire workflow over WhatsApp. Student documents (transcripts, recommendation letters, visa paperwork) are shared as chat attachments. Application statuses live in the counselor\'s memory or a messy spreadsheet. Commission tracking from partner universities is manual. When an agency scales past 20–30 active students, this workflow collapses: documents get lost in chat history, deadlines are missed, and there\'s no audit trail.',
-    'projects.educounsellor.solution':           'A white-label SaaS dashboard designed to slot into any counseling agency\'s workflow without forcing them to change how they operate — just where they operate.\n\nThe Admin Dashboard gives agency managers a master view of all applications across all counselors, with status tracking (Preparing → Submitted → Under Review → Accepted), commission calculations, student assignment, and CSV export for reporting.\n\nThe Student Portal gives each applicant a personal dashboard to view their application statuses, upload required documents (with type classification and size validation), and track deadlines — eliminating the need to ask their counselor for updates over chat.\n\nThe platform is white-label by design: agency name, branding, and domain are configurable per deployment, so each organization presents it as their own tool.',
-    'projects.educounsellor.technicalDecisions': 'Supabase row-level security handles multi-tenancy — each agency\'s data is isolated at the database level, not just the application layer. The document vault uses Supabase Storage with signed URLs for secure, time-limited access. The system is designed for independent deployment per agency rather than a shared multi-tenant instance, keeping data sovereignty simple and avoiding the compliance complexity of shared infrastructure.',
+    'projects.educounsellor.solution':           'A white-label SaaS dashboard designed to slot into any counseling agency\'s workflow without forcing them to change how they operate, just where they operate.\n\nThe Admin Dashboard gives agency managers a master view of all applications across all counselors, with status tracking (Preparing, Submitted, Under Review, Accepted), commission calculations, student assignment, and CSV export for reporting.\n\nThe Student Portal gives each applicant a personal dashboard to view their application statuses, upload required documents (with type classification and size validation), and track deadlines, eliminating the need to ask their counselor for updates over chat.\n\nThe platform is white-label by design: agency name, branding, and domain are configurable per deployment, so each organization presents it as their own tool.',
+    'projects.educounsellor.technicalDecisions': 'Supabase row-level security handles multi-tenancy: each agency\'s data is isolated at the database level, not just the application layer. The document vault uses Supabase Storage with signed URLs for secure, time-limited access. The system is designed for independent deployment per agency rather than a shared multi-tenant instance, keeping data sovereignty simple and avoiding the compliance complexity of shared infrastructure.',
     'projects.educounsellor.whereItStands':      'Feature-complete and deployment-ready. Currently seeking a first agency partner for pilot deployment and feedback iteration.',
 
     // Project detail bodies — Spotter
@@ -225,7 +225,7 @@ export const translations: Record<string, Record<string, string>> = {
     'faq.eyebrow': 'Sormadan önce',
     'faq.header':  'SSS',
     'faq.q1': 'Hangi hizmetleri sunuyorsunuz?',
-    'faq.a1': 'Özel web platformları, yapay zeka ve iş akışı otomasyonu, e-ticaret ve SaaS, CRM ile ERP sistemleri — işletmenin gerçekten daha iyi çalışması için ne gerekiyorsa.',
+    'faq.a1': 'Özel web platformları, yapay zeka ve iş akışı otomasyonu, e-ticaret ve SaaS, CRM ile ERP sistemleri, işletmenin gerçekten daha iyi çalışması için ne gerekiyorsa.',
     'faq.q2': 'Tipik bir proje ne kadar sürer?',
     'faq.a2': 'Her zaman kapsama bağlıdır. Odaklı bir platform haftalarda tamamlanabilir, tam bir işletim sistemi daha uzun sürer. Zaman çizelgeleri iş başlamadan önce sabitlenir, asla süreç içinde tahmin edilmez.',
     'faq.q3': 'Fiyat teklifi nasıl alabilirim?',
@@ -259,28 +259,28 @@ export const translations: Record<string, Record<string, string>> = {
     // Hero
     'hero.eyebrow': 'مهندس منتجات تقنية',
     'hero.name':    'عمر زغلول',
-    'hero.subhead': 'أنظمة ومنصات وأتمتة مخصصة، مبنية لتحويل الاحتكاك التشغيلي إلى قوة دفع حقيقية.',
-    'hero.cta.primary':   'احجز جلسة استكشاف مجانية',
+    'hero.subhead': 'أنظمة ومنصات وأتمتة أبنيها خصيصاً لتحويل فوضى العمل اليومي إلى نمو حقيقي.',
+    'hero.cta.primary':   'احجز استشارة مجانية',
     'hero.cta.secondary': 'تصفح الأعمال',
 
     // Work Section
-    'work.eyebrow': 'في الإنتاج',
+    'work.eyebrow': 'على أرض الواقع',
     'work.header':  'أعمال مختارة',
 
     // Project cards
     'projects.oncoflow.category':      'رعاية صحية / SaaS',
     'projects.oncoflow.caption':       'استبدل التتبع الورقي بلوحة تحكم واحدة لدورات علاج الأورام.',
     'projects.altinkapi.category':     'سفر / تجارة إلكترونية',
-    'projects.altinkapi.caption':      'منصة حجز ثنائية اللغة للحج والعمرة مع توافر لحظي.',
+    'projects.altinkapi.caption':      'منصة حجز ثنائية اللغة للحج والعمرة، تعرض التوفر لحظة بلحظة.',
     'projects.educounsellor.category': 'تكنولوجيا التعليم / SaaS',
-    'projects.educounsellor.caption':  'لوحة تحكم تحت علامتك التجارية تحلّ محل فوضى واتساب في وكالات التقديم.',
+    'projects.educounsellor.caption':  'لوحة تحكم بهويتك الخاصة تُنهي الفوضى على واتساب في وكالات التقديم.',
     'projects.spotter.category':       'صحة ولياقة / موبايل',
     'projects.spotter.caption':        'تطبيق واحد يحلّ محل أربعة للتتبع والتدريب والتغذية.',
     'projects.reverse-swing.category': 'رياضة / محتوى',
-    'projects.reverse-swing.caption':  'كتابة كريكيت معمّقة مدعومة بنظام إدارة محتوى مخصص.',
+    'projects.reverse-swing.caption':  'كتابة معمّقة عن الكريكيت، مدعومة بنظام إدارة محتوى مُخصّص.',
 
     // Project subtitle
-    'projects.oncoflow.subtitle':      'منصة صيدلاني الأورام السريري',
+    'projects.oncoflow.subtitle':      'منصة طبية',
     'projects.altinkapi.subtitle':     'منصة حجز الحج والعمرة',
     'projects.educounsellor.subtitle': 'لوحة إدارة طلبات الطلاب تحت علامة بيضاء',
     'projects.spotter.subtitle':       'مساعد التغذية واللياقة المدعوم بالذكاء الاصطناعي',
@@ -290,7 +290,7 @@ export const translations: Record<string, Record<string, string>> = {
     'project.problem':            'المشكلة',
     'project.solution':           'الحل',
     'project.technicalDecisions': 'القرارات التقنية',
-    'project.status':             'أين يقف المشروع',
+    'project.status':             'أين يتميز المشروع',
     'project.next':               'المشروع التالي',
     'project.year':               'السنة',
     'project.role':               'الدور',
@@ -298,13 +298,13 @@ export const translations: Record<string, Record<string, string>> = {
     'project.techstack':          'التقنيات المستخدمة',
 
     // Project detail bodies — OncoFlow
-    'projects.oncoflow.problem':            'يتتبع صيادلة الأورام دورات العلاج الكيميائي ونتائج المختبر والتفاعلات الدوائية وجداول المرضى — غالباً عبر جداول بيانات منفصلة وأوراق ورقية وأنظمة مستشفيات لا تتواصل مع بعضها. القيمة المخبرية التي تفوت أو تعارض في جدول العلاج ليست مجرد ضعف في الكفاءة — بل خطر على سلامة المريض.',
+    'projects.oncoflow.problem':            'يتتبع صيادلة الأورام دورات العلاج الكيميائي ونتائج المختبر والتفاعلات الدوائية وجداول المرضى، غالباً عبر جداول بيانات منفصلة وأوراق ورقية وأنظمة مستشفيات لا تتواصل مع بعضها. القيمة المخبرية التي تفوت أو تعارض في جدول العلاج ليست مجرد ضعف في الكفاءة، بل خطر على سلامة المريض.',
     'projects.oncoflow.solution':           'OncoFlow لوحة تحكم سريرية على الويب مصممة خصيصاً لصيادلة الأورام. تُركّز إدارة المرضى في ثلاثة وحدات أساسية:\n\nتقويم رئيسي يرسم دورات العلاج الكيميائي والأدوية التمهيدية ومراجعات المختبر لكل مريض على خط زمني واحد.\n\nمتتبع قيم المختبر منظم حسب الفئة السريرية مع اتجاهات تاريخية وعتبات تستدعي التنبيه.\n\nسجل المرضى مع البحث والوسوم البروتوكولية وتتبع الإدخال.',
     'projects.oncoflow.technicalDecisions': 'Next.js مع Supabase للمصادقة وقاعدة البيانات والأمان على مستوى الصفوف. التقويم يستخدم تطبيقاً مخصصاً لترميز منطق دورات العلاج مباشرة في طبقة الجدولة.',
     'projects.oncoflow.whereItStands':      'بُني بالتعاون مع خريج صيدلة سريرية كنموذج أولي عملي. يُعدّ حالياً للعرض على أقسام الأورام كبديل خفيف الوزن لأنظمة معلومات المستشفيات الضخمة.',
 
     // Project detail bodies — Altınkapı
-    'projects.altinkapi.problem':            'Altınkapı شركة سياحية متخصصة في رحلات الحج والعمرة. كانت عملية الحجز يدوية بالكامل — استفسارات عبر الهاتف وواتساب، وتفاصيل الباقات تُشارك كملفات PDF، ولا توجد وسيلة للعملاء لمقارنة الخيارات أو التحقق من التوافر.',
+    'projects.altinkapi.problem':            'Altınkapı شركة سياحية متخصصة في رحلات الحج والعمرة. كانت عملية الحجز يدوية بالكامل، من استفسارات عبر الهاتف وواتساب، وتفاصيل الباقات تُشارك كملفات PDF، ولا توجد وسيلة للعملاء لمقارنة الخيارات أو التحقق من التوافر.',
     'projects.altinkapi.solution':           'منصة حجز ثنائية اللغة تتيح للعملاء تصفح باقات الحج والعمرة والتصفية حسب مدينة المغادرة ودرجة الخدمة والتاريخ، مع عرض تسعير شفاف مع بنود مفصّلة.\n\nنظام عرض الباقات يفصّل كل عرض بتقييمات قرب الفنادق وتوزيع الليالي بين مكة والمدينة ومستويات الخدمة.',
     'projects.altinkapi.technicalDecisions': 'Next.js مع Firebase لبساطة الاستضافة وقاعدة البيانات الفورية. التدويل طُبّق على مستوى التوجيه لدعم بنية RTL الجاهزة للتوسع نحو العربية.',
     'projects.altinkapi.whereItStands':      'تم التسليم والمنصة تعمل. نشاط العميل التجاري متوقف حالياً لأسباب غير متعلقة بالمنصة. البنية التحتية جاهزة للنشر.',
@@ -317,57 +317,58 @@ export const translations: Record<string, Record<string, string>> = {
 
     // Project detail bodies — Spotter
     'projects.spotter.problem':            'معظم تطبيقات اللياقة تجبر المستخدمين على مسار واحد: إما تتبع التمارين أو تسجيل التغذية. المستخدمون الذين يريدون رؤية شاملة لصحتهم ينتهي بهم الأمر بالتنقل بين 3-4 تطبيقات منفصلة.',
-    'projects.spotter.solution':           'Spotter تطبيق موبايل مصمم كمساعد لياقة على سطح واحد.\n\nاستكشاف التمارين — فئات تمارين منتقاة مع تقييمات الصعوبة وإرشاد بالفيديو.\n\nتتبع التغذية والترطيب — مراقبة السعرات اليومية وتتبع استهلاك الماء.\n\nلوحة تحكم شخصية — تقرير يومي موحد.',
+    'projects.spotter.solution':           'Spotter تطبيق موبايل مصمم كمساعد لياقة على سطح واحد.\n\nاستكشاف التمارين: فئات تمارين منتقاة مع تقييمات الصعوبة وإرشاد بالفيديو.\n\nتتبع التغذية والترطيب: مراقبة السعرات اليومية وتتبع استهلاك الماء.\n\nلوحة تحكم شخصية: تقرير يومي موحد.',
     'projects.spotter.technicalDecisions': 'Flutter للنشر عبر المنصات من قاعدة كود واحدة. Firebase للمصادقة وتخزين بيانات المستخدم.',
     'projects.spotter.whereItStands':      'واجهة المستخدم الأساسية وتدفق الإعداد مكتملان. تكامل الخلفية وخوارزمية التوصية قيد التطوير.',
 
     // Project detail bodies — Reverse Swing
     'projects.reverse-swing.problem':            'محتوى الكريكيت على الإنترنت يعيش في طرفين: مجمعات الأخبار التي تُعطي الأولوية للسرعة، ومحادثات وسائل التواصل الاجتماعي التي تختفي في ساعات. يوجد فراغ للكتابة المعمّقة عن الكريكيت.',
     'projects.reverse-swing.solution':           'Reverse Swing منصة نشر مخصصة لمحتوى الكريكيت.\n\nالموقع العام يقدم تجربة قراءة سينمائية بنمط داكن مع بطاقات المقالات وتصفية الفئات.\n\nلوحة المشرف توفر واجهة إدارة محتوى مع إنشاء المقالات وتحليلات لكل مقال.',
-    'projects.reverse-swing.technicalDecisions': 'Supabase يتولى تخزين المحتوى والمصادقة والتحليلات. البنية بسيطة عمداً — المقالات تُجلب عند الطلب من Supabase.',
-    'projects.reverse-swing.whereItStands':      'يعمل بكامل طاقته. في مرحلة ما قبل الإطلاق — في انتظار إعداد النطاق المخصص وبذر المحتوى الأولي.',
+    'projects.reverse-swing.technicalDecisions': 'Supabase يتولى تخزين المحتوى والمصادقة والتحليلات. البنية بسيطة عمداً، المقالات تُجلب عند الطلب من Supabase.',
+    'projects.reverse-swing.whereItStands':      'يعمل بكامل طاقته. في مرحلة ما قبل الإطلاق، بانتظار إعداد النطاق المخصص وبذر المحتوى الأولي.',
 
     // Services
-    'services.eyebrow': 'أين أساعد',
+    'services.eyebrow': 'مجالات العمل',
     'services.header':  'الخدمات',
     'services.01.title': 'منصات ويب مخصصة',
-    'services.01.desc':  'مبنية حول طريقة عمل فريقك الفعلية، لتوقف الناس عن العمل حول البرنامج بدلاً من معه.',
+    'services.01.desc':  'مبنية حول طريقة عمل فريقك الحقيقية، ليكون البرنامج أداة تساعدهم لا عائقاً يتجاوزونه.',
     'services.02.title': 'ذكاء اصطناعي وأتمتة العمل',
-    'services.02.desc':  'الخطوات اليدوية بين أدواتك تختفي، وتبقى مختفية.',
+    'services.02.desc':  'الخطوات اليدوية بين أدواتك تختفي، إلى الأبد.',
     'services.03.title': 'حلول التجارة الإلكترونية',
-    'services.03.desc':  'متاجر وصفحات هبوط ومواقع محافظ تُطلق بسرعة، على أساس لا يحتاج إعادة بناء حين ينجح.',
+    'services.03.desc':  'متاجر إلكترونية وصفحات هبوط ومواقع بورتفوليو تُطلق بسرعة، وبأساس متين لا تحتاج لإعادة بنائه لاحقاً.',
     'services.04.title': 'أنظمة تشغيل الأعمال',
     'services.04.subtitle': 'منصات SaaS وCRM وERP',
     'services.04.desc':  'منصات SaaS وCRM وERP تضع بياناتك في مكان واحد بدلاً من خمسة.',
 
     // About
-    'about.header':  'عنق الزجاجة لم يكن يوماً الطلب. بل النظام الذي يقف تحته.',
-    'about.p1':      'كل عمل عملت معه وصل إلى اللحظة ذاتها: النمو فاق الأنظمة التي تحمله. جدول زمني يُحفظ على ورق. طلبات تُتتبع عبر مئات محادثات الدردشة. بيانات لا يثق بها أحد تماماً. لم يكن أي من ذلك يحتاج أداة أخرى تُضاف فوقه، بل يحتاج نظاماً واحداً مصمماً حول طريقة عمل الأعمال فعلياً.',
-    'about.p2':      'النظام الجيد رافعة تبنيها مرة واحدة وتستمر في العودة بالفائدة. هذا هو العمل: هندسة حاسوبية وتفكير منتجات مطبقة على ألم تشغيلي حقيقي، شخص واحد مسؤول من أول مكالمة إلى آخر نشر. لا تسليم بين أطراف، لا مديري حسابات، لا أحد يعيد تعلم أعمالك من الصفر.',
+    'about.header':  'المشكلة لم تكن يوماً في الطلب، بل في النظام الذي يعمل خلفه.',
+    'about.p1':      'كل شركة تعاملت معها وصلت إلى اللحظة نفسها: نموها تجاوز قدرة الأنظمة التي تسيّره. جدول مواعيد محفوظ على الورق، طلبات تضيع بين مئات محادثات الدردشة، بيانات لا يثق بها أحد بالكامل. الحل لم يكن أداة جديدة تُضاف فوق الفوضى، بل نظام واحد مبني حول طريقة عمل الشركة الحقيقية.',
+    'about.p2':      'النظام الجيد رافعة تبنيها مرة واحدة وتستمر في رد الفائدة عليك. هذا هو العمل: هندسة حاسوبية وتفكير منتجات، موجّهان لحل مشاكل تشغيلية حقيقية، بمسؤولية شخص واحد من أول مكالمة إلى آخر خطوة في النشر. بدون تسليم بين أطراف متعددة، بدون مدير حسابات، وبدون حاجة لأي شخص يتعلم تفاصيل شغلك من الصفر.',
 
     // FAQ
     'faq.eyebrow': 'قبل أن تسأل',
     'faq.header':  'الأسئلة الشائعة',
     'faq.q1': 'ما الخدمات التي تقدمها؟',
-    'faq.a1': 'منصات ويب مخصصة، أتمتة الذكاء الاصطناعي وسير العمل، التجارة الإلكترونية، وأنظمة SaaS وCRM وERP — ما يحتاجه العمل فعلاً للعمل بشكل أفضل.',
-    'faq.q2': 'كم يستغرق المشروع النموذجي؟',
-    'faq.a2': 'يعتمد دائماً على النطاق. منصة مركّزة قد تُشحن في أسابيع، نظام تشغيل كامل يأخذ وقتاً أطول. الجداول الزمنية تُحدد قبل بدء العمل، لا تُخمَّن في منتصف الطريق.',
+    'faq.a1': 'منصات ويب مخصصة، أتمتة بالذكاء الاصطناعي وسير العمل، التجارة الإلكترونية، وأنظمة SaaS وCRM وERP، كل ما تحتاجه شركتك لتعمل بكفاءة أكبر.',
+    'faq.q2': 'كم يستغرق المشروع عادةً؟',
+    'faq.a2': 'يعتمد ذلك على حجم المشروع. منصة بسيطة قد تكون جاهزة خلال أسابيع، بينما نظام تشغيل متكامل يحتاج وقتاً أطول. الجدول الزمني يُحدد قبل بدء العمل، لا يُخمَّن في منتصفه.',
     'faq.q3': 'كيف أحصل على تقدير للسعر؟',
-    'faq.a3': 'كل مشروع يُحدد نطاقه بشروطه الخاصة، لا من قالب جاهز. جلسة استكشاف مجانية تمنحك رقماً واضحاً بسرعة.',
-    'faq.q4': 'ما هي آلية الدفع؟',
+    'faq.a3': 'نطاق كل مشروع يُحدد حسب احتياجاته الخاصة، وليس من قالب جاهز. استشارة مجانية تعطيك رقماً واضحاً بسرعة.',
+    'faq.a3.linkText': 'احجزها من هنا.',
+    'faq.q4': 'كيف تسير عملية الدفع؟',
     'faq.a4': 'النصف مقدماً للبدء، والنصف الآخر عند التسليم. بسيط، ويُبقي كلا الطرفين ملتزمَين بالجدول الزمني.',
     'faq.q5': 'هل تقدم دعماً بعد الإطلاق؟',
-    'faq.a5': 'أسبوعان من الدعم مدرجان مع كل إطلاق مجاناً. بعد ذلك، الدعم المستمر شهري بسعر يُحدد حسب المشروع، لا بسعر ثابت.',
+    'faq.a5': 'أسبوعان من الدعم مدرجان مع كل إطلاق مجاناً. بعد ذلك، الدعم المستمر شهري بسعر يُحدد حسب المشروع، ليس بسعر ثابت.',
 
     // Footer
     'contact.header':    'لنتحدث',
-    'contact.cta':       'احجز جلسة استكشاف مجانية',
+    'contact.cta':       'احجز استشارة مجانية',
     'footer.copy':       '© 2026 عمر زغلول',
 
     // 404
     '404.heading':    'هذه الصفحة غير موجودة.',
-    '404.body':       'قد يكون الرابط معطوباً أو تمت إزالة الصفحة. في كلتا الحالتين، لا شيء هنا.',
+    '404.body':       'يمكن أن يكون الرابط غير صحيح، أو أن الصفحة أُزيلت. في الحالتين، لا يوجد هنا شيء.',
     '404.cta.home':   'العودة للصفحة الرئيسية',
-    '404.cta.call':   'احجز جلسة استكشاف',
+    '404.cta.call':   'احجز استشارة مجانية',
   },
 };
