@@ -50,7 +50,7 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
 
         <h1
           id="hero-name"
-          class="font-display text-[clamp(3rem,10vw,6.5rem)] font-bold leading-none tracking-tight text-text opacity-0"
+          class="font-display text-[clamp(2.25rem,5vw,3.625rem)] font-bold leading-none tracking-tight text-text opacity-0"
           data-i18n="hero.name"
         >
           Omar Zaghloul
@@ -88,7 +88,7 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
       <!-- Avatar (right / top on mobile) -->
       <div class="relative z-10 flex items-center justify-center lg:w-1/2">
         <!-- Radial glow -->
-        <div class="absolute top-1/2 left-1/2 h-[300px] w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent opacity-[0.07] blur-[100px] md:h-[450px] md:w-[450px]"></div>
+
 
         <div id="hero-avatar" class="relative opacity-0 not-rtl-mirror">
           <img
@@ -116,7 +116,7 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
     <!-- Section header -->
     <div class="mx-auto w-full max-w-7xl mb-16">
       <p class="work-fade mb-3 font-body text-xs font-medium tracking-[0.2em] uppercase text-accent opacity-0" data-i18n="work.eyebrow">In production</p>
-      <h2 class="work-fade font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0" data-i18n="work.header">
+      <h2 class="work-fade font-display text-[clamp(1.75rem,3.5vw,2.25rem)] font-bold tracking-tight text-text opacity-0" data-i18n="work.header">
         Selected work
       </h2>
     </div>
@@ -127,10 +127,10 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
         const meta = projectMeta[project.slug] || { category: project.data.category, caption: project.data.subtitle };
         return (
           <div
-            class="flip-card work-card aspect-[4/3] w-full opacity-0"
+            class="flip-card work-card aspect-[4/3] w-full opacity-0 rounded-xl overflow-hidden"
             style={`--delay: ${i * 0.08}s`}
           >
-            <div class="flip-card-inner rounded-xl overflow-hidden border border-border">
+            <div class="flip-card-inner border border-border">
               <!-- Front face -->
               <div class="flip-card-front relative w-full h-full rounded-xl overflow-hidden bg-surface">
                 <Image
@@ -179,7 +179,7 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
       <!-- Header -->
       <div class="mb-16">
         <p class="services-fade mb-3 font-body text-xs font-medium tracking-[0.2em] uppercase text-accent opacity-0" data-i18n="services.eyebrow">Where I help</p>
-        <h2 class="services-fade font-display text-[clamp(2.5rem,5vw,4.5rem)] font-bold tracking-tight text-text opacity-0" data-i18n="services.header">
+        <h2 class="services-fade font-display text-[clamp(1.75rem,3.5vw,2.25rem)] font-bold tracking-tight text-text opacity-0" data-i18n="services.header">
           Services
         </h2>
       </div>
@@ -250,7 +250,7 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
       <!-- Header -->
       <div class="mb-14">
         <p class="faq-fade mb-3 font-body text-xs font-medium tracking-[0.2em] uppercase text-accent opacity-0" data-i18n="faq.eyebrow">Before you ask</p>
-        <h2 class="faq-fade font-display text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight text-text opacity-0" data-i18n="faq.header">
+        <h2 class="faq-fade font-display text-[clamp(1.75rem,3.5vw,2.25rem)] font-bold tracking-tight text-text opacity-0" data-i18n="faq.header">
           FAQ
         </h2>
       </div>
@@ -424,48 +424,18 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
         );
       });
 
-      // ── About: word-by-word scroll reveal on first paragraph ─
+      // ── About section ─────────────────────────────────────────
       gsap.fromTo('#about-header',
         { y: 30, opacity: 0 },
         { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
           scrollTrigger: { trigger: '#about-header', start: 'top 85%' } }
       );
 
-      const aboutParas = document.querySelectorAll('.about-para');
-      const firstPara = aboutParas[0] as HTMLElement | undefined;
-
-      if (firstPara) {
-        if (window.matchMedia('(pointer: coarse)').matches) {
-          gsap.fromTo(firstPara, { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
-            scrollTrigger: { trigger: firstPara, start: 'top 85%' } });
-        } else {
-          const words = (firstPara.textContent?.trim() || '').split(/\s+/);
-          firstPara.style.opacity = '1';
-          firstPara.innerHTML = words.map(w =>
-            `<span class="about-word" style="display:inline;opacity:0.12;color:var(--color-text-muted)">${w}</span>`
-          ).join(' ');
-
-          gsap.to('.about-word', {
-            opacity: 1,
-            color: 'var(--color-text)',
-            stagger: { each: 0.03 },
-            ease: 'none',
-            scrollTrigger: {
-              trigger: firstPara,
-              start: 'top 80%',
-              end: 'center center',
-              scrub: true,
-            }
-          });
-        }
-      }
-
-      if (aboutParas[1]) {
-        gsap.fromTo(aboutParas[1], { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out',
-            scrollTrigger: { trigger: aboutParas[1], start: 'top 85%' } }
-        );
-      }
+      gsap.fromTo('.about-para',
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', stagger: 0.15,
+          scrollTrigger: { trigger: '.about-para', start: 'top 85%' } }
+      );
 
       // ── FAQ fade ─────────────────────────────────────────────
       gsap.fromTo('.faq-fade',
