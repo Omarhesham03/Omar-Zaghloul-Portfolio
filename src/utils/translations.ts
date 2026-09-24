@@ -106,6 +106,7 @@ export const translations: Record<string, Record<string, string>> = {
     'faq.a2': 'Depends on scope, always. A focused platform can ship in weeks, a full operating system takes longer. Timelines get locked in before work starts, never guessed at along the way.',
     'faq.q3': 'How do I get a price estimate?',
     'faq.a3': 'Every project is scoped on its own terms, never off a template. A free discovery call gets you a clear number, fast.',
+    'faq.a3.linkText': 'Book one here.',
     'faq.q4': 'What is your payment process?',
     'faq.a4': 'Half upfront to begin, half on delivery. Simple, and it keeps both sides accountable to the timeline.',
     'faq.q5': 'Do you offer support after launch?',
@@ -230,6 +231,7 @@ export const translations: Record<string, Record<string, string>> = {
     'faq.a2': 'Her zaman kapsama bağlıdır. Odaklı bir platform haftalarda tamamlanabilir, tam bir işletim sistemi daha uzun sürer. Zaman çizelgeleri iş başlamadan önce sabitlenir, asla süreç içinde tahmin edilmez.',
     'faq.q3': 'Fiyat teklifi nasıl alabilirim?',
     'faq.a3': 'Her proje kendi koşullarına göre kapsamlandırılır, asla şablondan değil. Ücretsiz bir keşif görüşmesi size hızlıca net bir rakam verir.',
+    'faq.a3.linkText': 'Buradan rezervasyon yapın.',
     'faq.q4': 'Ödeme süreci nasıl işliyor?',
     'faq.a4': 'Başlamak için yarısı peşin, teslimatta diğer yarısı. Basit ve her iki tarafı zaman çizelgesine karşı hesap verebilir tutar.',
     'faq.q5': 'Lansmanın ardından destek sunuyor musunuz?',
@@ -259,8 +261,8 @@ export const translations: Record<string, Record<string, string>> = {
     // Hero
     'hero.eyebrow': 'مهندس منتجات تقنية',
     'hero.name':    'عمر زغلول',
-    'hero.subhead': 'أنظمة ومنصات وأتمتة أبنيها خصيصاً لتحويل فوضى العمل اليومي إلى نمو حقيقي.',
-    'hero.cta.primary':   'احجز استشارة مجانية',
+    'hero.subhead': 'أنظمة ومنصات وأتمتة مخصّصة، مصمَّمة لتحويل الفوضى التشغيلية إلى رافعة نمو حقيقية.',
+    'hero.cta.primary':   'احجز استشارة تعريفية مجانية',
     'hero.cta.secondary': 'تصفح الأعمال',
 
     // Work Section
@@ -328,14 +330,14 @@ export const translations: Record<string, Record<string, string>> = {
     'projects.reverse-swing.whereItStands':      'يعمل بكامل طاقته. في مرحلة ما قبل الإطلاق، بانتظار إعداد النطاق المخصص وبذر المحتوى الأولي.',
 
     // Services
-    'services.eyebrow': 'مجالات العمل',
+    'services.eyebrow': 'أين أساعد',
     'services.header':  'الخدمات',
     'services.01.title': 'منصات ويب مخصصة',
-    'services.01.desc':  'مبنية حول طريقة عمل فريقك الحقيقية، ليكون البرنامج أداة تساعدهم لا عائقاً يتجاوزونه.',
+    'services.01.desc':  'مبنية حول طريقة عمل فريقك فعلياً، ليصبح البرنامج أداة تُسهّل عملهم لا عائقاً يتحايلون عليه.',
     'services.02.title': 'ذكاء اصطناعي وأتمتة العمل',
     'services.02.desc':  'الخطوات اليدوية بين أدواتك تختفي، إلى الأبد.',
     'services.03.title': 'حلول التجارة الإلكترونية',
-    'services.03.desc':  'متاجر إلكترونية وصفحات هبوط ومواقع بورتفوليو تُطلق بسرعة، وبأساس متين لا تحتاج لإعادة بنائه لاحقاً.',
+    'services.03.desc':  'متاجر إلكترونية وصفحات هبوط ومواقع بورتفوليو تُطلق بسرعة، على بنية لا تحتاج لإعادة بناء بمجرد أن تنجح.',
     'services.04.title': 'أنظمة تشغيل الأعمال',
     'services.04.subtitle': 'منصات SaaS وCRM وERP',
     'services.04.desc':  'منصات SaaS وCRM وERP تضع بياناتك في مكان واحد بدلاً من خمسة.',
@@ -362,13 +364,13 @@ export const translations: Record<string, Record<string, string>> = {
 
     // Footer
     'contact.header':    'لنتحدث',
-    'contact.cta':       'احجز استشارة مجانية',
+    'contact.cta':       'احجز استشارة تعريفية مجانية',
     'footer.copy':       '© 2026 عمر زغلول',
 
     // 404
     '404.heading':    'هذه الصفحة غير موجودة.',
     '404.body':       'يمكن أن يكون الرابط غير صحيح، أو أن الصفحة أُزيلت. في الحالتين، لا يوجد هنا شيء.',
     '404.cta.home':   'العودة للصفحة الرئيسية',
-    '404.cta.call':   'احجز استشارة مجانية',
+    '404.cta.call':   'احجز استشارة تعريفية مجانية',
   },
 };

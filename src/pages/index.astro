@@ -159,7 +159,7 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
                   {meta.caption}
                 </p>
                 <a
-                  href={`/projects/${project.slug}`}
+                  href={`/projects/${project.slug}/`}
                   class="mt-6 inline-flex items-center gap-2 font-body text-sm font-medium text-accent hover:text-text transition-colors"
                   aria-label={`View ${project.data.title} case study`}
                 >
@@ -308,13 +308,14 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
             >
               <div class="pb-6">
                 {item.hasLink ? (
-                  <p class="font-body text-[0.9375rem] leading-[1.75] text-text-muted" data-i18n={item.aKey}>
-                    {item.a}{' '}
+                  <p class="font-body text-[0.9375rem] leading-[1.75] text-text-muted">
+                    <span data-i18n={item.aKey}>{item.a}</span>{' '}
                     <a
                       href="https://cal.com/omar-ztech/discovery"
                       target="_blank"
                       rel="noopener noreferrer"
                       class="text-accent hover:underline"
+                      data-i18n="faq.a3.linkText"
                     >
                       Book one here.
                     </a>
