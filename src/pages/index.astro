@@ -514,9 +514,25 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
       });
     };
 
+    // ── Touch flip cards (for devices without hover) ──────────
+    const initTouchFlipCards = () => {
+      if (window.matchMedia('(hover: none)').matches) {
+        document.querySelectorAll('.flip-card').forEach((card) => {
+          card.addEventListener('click', (e) => {
+            if ((e.target as HTMLElement).closest('a')) {
+              // the case study link, let it navigate normally, never toggle the flip
+              return;
+            }
+            card.classList.toggle('is-flipped');
+          });
+        });
+      }
+    };
+
     document.addEventListener('astro:page-load', () => {
       initAnimations();
       initFAQ();
+      initTouchFlipCards();
     });
   </script>
 
