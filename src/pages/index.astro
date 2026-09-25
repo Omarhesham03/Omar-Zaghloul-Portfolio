@@ -339,6 +339,7 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
   <script>
     import { gsap } from "gsap";
     import ScrollTrigger from "gsap/ScrollTrigger";
+    import { translations } from "../utils/translations";
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -357,36 +358,63 @@ const projectMeta: Record<string, { category: string; caption: string }> = {
 
       gsap.killTweensOf('#hero-eyebrow, #hero-name, #hero-subhead, #hero-ctas, #hero-avatar');
 
-      // ── Hero: character-by-character stagger on name ──────────
+      // ── Hero: character-by-character stagger on name (Latin) / fade (Arabic) ──────────
       const heroName = document.getElementById('hero-name');
       if (heroName) {
-        heroName.style.opacity = '1';
-        const fullName = 'Omar Zaghloul';
-        const chars = Array.from(fullName).map(c =>
-          `<span class="hero-char" style="display:inline-block;opacity:0">${c === ' ' ? '&nbsp;' : c}</span>`
-        ).join('');
-        heroName.innerHTML = chars;
+        const currentLang = localStorage.getItem('i18n_lang') || 'en';
+        const langTranslations = translations[currentLang] || translations['en'];
+        const fullName = langTranslations['hero.name'] || 'Omar Zaghloul';
 
-        const charEls = heroName.querySelectorAll('.hero-char');
-        const staggerEnd = (charEls.length - 1) * 0.035;
+        if (currentLang === 'ar') {
+          // In Arabic, avoid character splitting to prevent reversing and preserving connected cursive forms
+          heroName.style.opacity = '0';
+          heroName.innerHTML = fullName;
 
-        gsap.fromTo(charEls,
-          { opacity: 0, y: 40, rotateX: -40, transformPerspective: 400 },
-          { opacity: 1, y: 0, rotateX: 0, duration: 0.6, stagger: 0.035, ease: 'back.out(1.7)' }
-        );
+          gsap.fromTo(heroName,
+            { opacity: 0, y: 30 },
+            { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }
+          );
 
-        gsap.fromTo('#hero-eyebrow',
-          { y: 15, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.1 }
-        );
-        gsap.fromTo('#hero-subhead',
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: staggerEnd + 0.2 }
-        );
-        gsap.fromTo('#hero-ctas',
-          { y: 20, opacity: 0 },
-          { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: staggerEnd + 0.35 }
-        );
+          gsap.fromTo('#hero-eyebrow',
+            { y: 15, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.1 }
+          );
+          gsap.fromTo('#hero-subhead',
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.3 }
+          );
+          gsap.fromTo('#hero-ctas',
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: 0.45 }
+          );
+        } else {
+          heroName.style.opacity = '1';
+          const chars = Array.from(fullName).map(c =>
+            `<span class="hero-char" style="display:inline-block;opacity:0">${c === ' ' ? '&nbsp;' : c}</span>`
+          ).join('');
+          heroName.innerHTML = chars;
+
+          const charEls = heroName.querySelectorAll('.hero-char');
+          const staggerEnd = (charEls.length - 1) * 0.035;
+
+          gsap.fromTo(charEls,
+            { opacity: 0, y: 40, rotateX: -40, transformPerspective: 400 },
+            { opacity: 1, y: 0, rotateX: 0, duration: 0.6, stagger: 0.035, ease: 'back.out(1.7)' }
+          );
+
+          gsap.fromTo('#hero-eyebrow',
+            { y: 15, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.5, ease: 'power3.out', delay: 0.1 }
+          );
+          gsap.fromTo('#hero-subhead',
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: staggerEnd + 0.2 }
+          );
+          gsap.fromTo('#hero-ctas',
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: 'power3.out', delay: staggerEnd + 0.35 }
+          );
+        }
       }
 
       // Avatar
